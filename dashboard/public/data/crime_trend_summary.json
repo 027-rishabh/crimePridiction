@@ -1,0 +1,240 @@
+{
+  "Agra": {
+    "Children": "decreasing",
+    "SC": "decreasing",
+    "ST": "stable",
+    "Senior Citizens": "stable",
+    "Women": "decreasing"
+  },
+  "Amritsar": {
+    "Children": "increasing",
+    "SC": "decreasing",
+    "ST": "stable",
+    "Senior Citizens": "decreasing",
+    "Women": "increasing"
+  },
+  "Asansol": {
+    "Children": "increasing",
+    "SC": "decreasing",
+    "ST": "decreasing",
+    "Senior Citizens": "increasing",
+    "Women": "decreasing"
+  },
+  "Aurangabad": {
+    "Children": "increasing",
+    "SC": "increasing",
+    "ST": "decreasing",
+    "Senior Citizens": "decreasing",
+    "Women": "increasing"
+  },
+  "Bhopal": {
+    "Children": "increasing",
+    "SC": "increasing",
+    "ST": "increasing",
+    "Senior Citizens": "decreasing",
+    "Women": "increasing"
+  },
+  "Chandigarh City": {
+    "Children": "increasing",
+    "SC": "increasing",
+    "ST": "stable",
+    "Senior Citizens": "increasing",
+    "Women": "increasing"
+  },
+  "Dhanbad": {
+    "Children": "decreasing",
+    "SC": "increasing",
+    "ST": "decreasing",
+    "Senior Citizens": "stable",
+    "Women": "decreasing"
+  },
+  "Durg-Bhilainagar": {
+    "Children": "decreasing",
+    "SC": "increasing",
+    "ST": "increasing",
+    "Senior Citizens": "decreasing",
+    "Women": "decreasing"
+  },
+  "Faridabad": {
+    "Children": "increasing",
+    "SC": "increasing",
+    "ST": "stable",
+    "Senior Citizens": "increasing",
+    "Women": "increasing"
+  },
+  "Gwalior": {
+    "Children": "increasing",
+    "SC": "increasing",
+    "ST": "decreasing",
+    "Senior Citizens": "decreasing",
+    "Women": "decreasing"
+  },
+  "Jabalpur": {
+    "Children": "increasing",
+    "SC": "decreasing",
+    "ST": "increasing",
+    "Senior Citizens": "stable",
+    "Women": "decreasing"
+  },
+  "Jamshedpur": {
+    "Children": "decreasing",
+    "SC": "decreasing",
+    "ST": "increasing",
+    "Senior Citizens": "stable",
+    "Women": "decreasing"
+  },
+  "Jodhpur": {
+    "Children": "increasing",
+    "SC": "increasing",
+    "ST": "increasing",
+    "Senior Citizens": "increasing",
+    "Women": "increasing"
+  },
+  "Kannur": {
+    "Children": "increasing",
+    "SC": "decreasing",
+    "ST": "decreasing",
+    "Senior Citizens": "increasing",
+    "Women": "increasing"
+  },
+  "Kollam": {
+    "Children": "increasing",
+    "SC": "decreasing",
+    "ST": "stable",
+    "Senior Citizens": "increasing",
+    "Women": "increasing"
+  },
+  "Kota": {
+    "Children": "increasing",
+    "SC": "increasing",
+    "ST": "increasing",
+    "Senior Citizens": "decreasing",
+    "Women": "increasing"
+  },
+  "Ludhiana": {
+    "Children": "decreasing",
+    "SC": "decreasing",
+    "ST": "stable",
+    "Senior Citizens": "increasing",
+    "Women": "decreasing"
+  },
+  "Madurai": {
+    "Children": "decreasing",
+    "SC": "decreasing",
+    "ST": "stable",
+    "Senior Citizens": "increasing",
+    "Women": "decreasing"
+  },
+  "Malappuram": {
+    "Children": "decreasing",
+    "SC": "decreasing",
+    "ST": "increasing",
+    "Senior Citizens": "decreasing",
+    "Women": "increasing"
+  },
+  "Meerut": {
+    "Children": "decreasing",
+    "SC": "increasing",
+    "ST": "stable",
+    "Senior Citizens": "stable",
+    "Women": "decreasing"
+  },
+  "Nasik": {
+    "Children": "increasing",
+    "SC": "increasing",
+    "ST": "increasing",
+    "Senior Citizens": "increasing",
+    "Women": "increasing"
+  },
+  "Prayagraj": {
+    "Children": "increasing",
+    "SC": "increasing",
+    "ST": "stable",
+    "Senior Citizens": "increasing",
+    "Women": "increasing"
+  },
+  "Raipur": {
+    "Children": "decreasing",
+    "SC": "increasing",
+    "ST": "decreasing",
+    "Senior Citizens": "increasing",
+    "Women": "increasing"
+  },
+  "Rajkot": {
+    "Children": "increasing",
+    "SC": "increasing",
+    "ST": "increasing",
+    "Senior Citizens": "decreasing",
+    "Women": "increasing"
+  },
+  "Ranchi": {
+    "Children": "increasing",
+    "SC": "increasing",
+    "ST": "decreasing",
+    "Senior Citizens": "stable",
+    "Women": "increasing"
+  },
+  "Srinagar": {
+    "Children": "increasing",
+    "SC": "stable",
+    "ST": "stable",
+    "Senior Citizens": "decreasing",
+    "Women": "increasing"
+  },
+  "Thiruvananthapuram": {
+    "Children": "increasing",
+    "SC": "increasing",
+    "ST": "increasing",
+    "Senior Citizens": "increasing",
+    "Women": "increasing"
+  },
+  "Thrissur": {
+    "Children": "increasing",
+    "SC": "decreasing",
+    "ST": "decreasing",
+    "Senior Citizens": "increasing",
+    "Women": "increasing"
+  },
+  "Tiruchirapalli": {
+    "Children": "increasing",
+    "SC": "increasing",
+    "ST": "stable",
+    "Senior Citizens": "increasing",
+    "Women": "increasing"
+  },
+  "Vadodara": {
+    "Children": "increasing",
+    "SC": "increasing",
+    "ST": "decreasing",
+    "Senior Citizens": "increasing",
+    "Women": "increasing"
+  },
+  "Varanasi": {
+    "Children": "decreasing",
+    "SC": "decreasing",
+    "ST": "stable",
+    "Senior Citizens": "increasing",
+    "Women": "decreasing"
+  },
+  "Vasai Virar": {
+    "Children": "increasing",
+    "SC": "decreasing",
+    "ST": "decreasing",
+    "Senior Citizens": "increasing",
+    "Women": "increasing"
+  },
+  "Vijayawada": {
+    "Children": "increasing",
+    "SC": "increasing",
+    "ST": "increasing",
+    "Senior Citizens": "decreasing",
+    "Women": "increasing"
+  },
+  "Vishakhapatnam": {
+    "Children": "decreasing",
+    "SC": "decreasing",
+    "ST": "decreasing",
+    "Senior Citizens": "decreasing",
+    "Women": "decreasing"
+  }
+}

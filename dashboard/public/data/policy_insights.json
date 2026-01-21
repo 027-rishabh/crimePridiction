@@ -1,0 +1,73 @@
+{
+  "interpretation_notes": [
+    "Higher CVI indicates greater relative vulnerability across vulnerable groups.",
+    "Group vulnerability scores are based on normalized crime rates averaged across all cities and years."
+  ],
+  "least_risk_cities": [
+    {
+      "CVI_Overall": 0.022140039447731755,
+      "City": "Tiruchirapalli"
+    },
+    {
+      "CVI_Overall": 0.044287123133276984,
+      "City": "Amritsar"
+    },
+    {
+      "CVI_Overall": 0.04513947590870667,
+      "City": "Vadodara"
+    },
+    {
+      "CVI_Overall": 0.04608340377571146,
+      "City": "Madurai"
+    },
+    {
+      "CVI_Overall": 0.046252465483234716,
+      "City": "Jamshedpur"
+    }
+  ],
+  "most_vulnerable_groups": [
+    {
+      "Group": "Women",
+      "Group_Vulnerability_Score": 0.3049243365985448
+    },
+    {
+      "Group": "Children",
+      "Group_Vulnerability_Score": 0.1153804717153133
+    },
+    {
+      "Group": "Senior Citizens",
+      "Group_Vulnerability_Score": 0.0245180912601727
+    },
+    {
+      "Group": "SC",
+      "Group_Vulnerability_Score": 0.0238675351797523
+    },
+    {
+      "Group": "ST",
+      "Group_Vulnerability_Score": 0.0036174233006812
+    }
+  ],
+  "n_cities": 34,
+  "top_high_risk_cities": [
+    {
+      "CVI_Overall": 0.3064313891236968,
+      "City": "Bhopal"
+    },
+    {
+      "CVI_Overall": 0.3036066497604959,
+      "City": "Vijayawada"
+    },
+    {
+      "CVI_Overall": 0.23317131586362358,
+      "City": "Gwalior"
+    },
+    {
+      "CVI_Overall": 0.22730346576500424,
+      "City": "Faridabad"
+    },
+    {
+      "CVI_Overall": 0.20579740772048463,
+      "City": "Jodhpur"
+    }
+  ]
+}

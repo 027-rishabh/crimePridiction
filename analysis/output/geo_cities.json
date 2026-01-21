@@ -1,0 +1,172 @@
+[
+  {
+    "City": "Agra",
+    "Latitude": 27.1767,
+    "Longitude": 78.0081
+  },
+  {
+    "City": "Amritsar",
+    "Latitude": 31.634,
+    "Longitude": 74.8723
+  },
+  {
+    "City": "Asansol",
+    "Latitude": 23.6739,
+    "Longitude": 86.9524
+  },
+  {
+    "City": "Aurangabad",
+    "Latitude": 19.8762,
+    "Longitude": 75.3433
+  },
+  {
+    "City": "Bhopal",
+    "Latitude": 23.2599,
+    "Longitude": 77.4126
+  },
+  {
+    "City": "Chandigarh City",
+    "Latitude": 30.7333,
+    "Longitude": 76.7794
+  },
+  {
+    "City": "Dhanbad",
+    "Latitude": 23.7957,
+    "Longitude": 86.4304
+  },
+  {
+    "City": "Durg-Bhilainagar",
+    "Latitude": 21.19,
+    "Longitude": 81.2833
+  },
+  {
+    "City": "Faridabad",
+    "Latitude": 28.4089,
+    "Longitude": 77.3178
+  },
+  {
+    "City": "Gwalior",
+    "Latitude": 26.2183,
+    "Longitude": 78.1828
+  },
+  {
+    "City": "Jabalpur",
+    "Latitude": 23.1815,
+    "Longitude": 79.9864
+  },
+  {
+    "City": "Jamshedpur",
+    "Latitude": 22.8046,
+    "Longitude": 86.2029
+  },
+  {
+    "City": "Jodhpur",
+    "Latitude": 26.2389,
+    "Longitude": 73.0243
+  },
+  {
+    "City": "Kannur",
+    "Latitude": 11.8745,
+    "Longitude": 75.3704
+  },
+  {
+    "City": "Kollam",
+    "Latitude": 8.8932,
+    "Longitude": 76.6141
+  },
+  {
+    "City": "Kota",
+    "Latitude": 25.2138,
+    "Longitude": 75.8648
+  },
+  {
+    "City": "Ludhiana",
+    "Latitude": 30.9,
+    "Longitude": 75.8573
+  },
+  {
+    "City": "Madurai",
+    "Latitude": 9.9252,
+    "Longitude": 78.1198
+  },
+  {
+    "City": "Malappuram",
+    "Latitude": 11.051,
+    "Longitude": 76.0711
+  },
+  {
+    "City": "Meerut",
+    "Latitude": 28.9845,
+    "Longitude": 77.7064
+  },
+  {
+    "City": "Nasik",
+    "Latitude": 19.9975,
+    "Longitude": 73.7898
+  },
+  {
+    "City": "Prayagraj",
+    "Latitude": 25.4358,
+    "Longitude": 81.8463
+  },
+  {
+    "City": "Raipur",
+    "Latitude": 21.2514,
+    "Longitude": 81.6296
+  },
+  {
+    "City": "Rajkot",
+    "Latitude": 22.3039,
+    "Longitude": 70.8022
+  },
+  {
+    "City": "Ranchi",
+    "Latitude": 23.3441,
+    "Longitude": 85.3096
+  },
+  {
+    "City": "Srinagar",
+    "Latitude": 34.0837,
+    "Longitude": 74.7973
+  },
+  {
+    "City": "Thiruvananthapuram",
+    "Latitude": 8.5241,
+    "Longitude": 76.9366
+  },
+  {
+    "City": "Thrissur",
+    "Latitude": 10.5276,
+    "Longitude": 76.2144
+  },
+  {
+    "City": "Tiruchirapalli",
+    "Latitude": 10.7905,
+    "Longitude": 78.7047
+  },
+  {
+    "City": "Vadodara",
+    "Latitude": 22.3072,
+    "Longitude": 73.1812
+  },
+  {
+    "City": "Varanasi",
+    "Latitude": 25.3176,
+    "Longitude": 82.9739
+  },
+  {
+    "City": "Vasai Virar",
+    "Latitude": 19.3919,
+    "Longitude": 72.8397
+  },
+  {
+    "City": "Vijayawada",
+    "Latitude": 16.5062,
+    "Longitude": 80.648
+  },
+  {
+    "City": "Vishakhapatnam",
+    "Latitude": 17.6868,
+    "Longitude": 83.2185
+  }
+]

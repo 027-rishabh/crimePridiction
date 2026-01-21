@@ -1,0 +1,171 @@
+City,Group,Mean_Crime_Rate
+Agra,Children,153.33333333333334
+Agra,SC,79.33333333333333
+Agra,ST,0.0
+Agra,Senior Citizens,0.0
+Agra,Women,1028.3333333333333
+Amritsar,Children,132.66666666666666
+Amritsar,SC,7.666666666666667
+Amritsar,ST,0.0
+Amritsar,Senior Citizens,5.666666666666667
+Amritsar,Women,274.6666666666667
+Asansol,Children,121.0
+Asansol,SC,6.333333333333333
+Asansol,ST,5.0
+Asansol,Senior Citizens,1.6666666666666667
+Asansol,Women,644.0
+Aurangabad,Children,352.3333333333333
+Aurangabad,SC,21.333333333333332
+Aurangabad,ST,1.6666666666666667
+Aurangabad,Senior Citizens,47.666666666666664
+Aurangabad,Women,856.0
+Bhopal,Children,991.6666666666666
+Bhopal,SC,88.0
+Bhopal,ST,12.333333333333334
+Bhopal,Senior Citizens,143.0
+Bhopal,Women,1791.6666666666667
+Chandigarh City,Children,250.66666666666666
+Chandigarh City,SC,2.3333333333333335
+Chandigarh City,ST,0.0
+Chandigarh City,Senior Citizens,54.333333333333336
+Chandigarh City,Women,346.3333333333333
+Dhanbad,Children,81.66666666666667
+Dhanbad,SC,39.666666666666664
+Dhanbad,ST,7.0
+Dhanbad,Senior Citizens,0.0
+Dhanbad,Women,315.0
+Durg-Bhilainagar,Children,390.6666666666667
+Durg-Bhilainagar,SC,11.333333333333334
+Durg-Bhilainagar,ST,1.6666666666666667
+Durg-Bhilainagar,Senior Citizens,68.0
+Durg-Bhilainagar,Women,543.6666666666666
+Faridabad,Children,754.0
+Faridabad,SC,72.66666666666667
+Faridabad,ST,0.0
+Faridabad,Senior Citizens,125.33333333333333
+Faridabad,Women,1313.3333333333333
+Gwalior,Children,544.6666666666666
+Gwalior,SC,333.6666666666667
+Gwalior,ST,9.333333333333334
+Gwalior,Senior Citizens,319.0
+Gwalior,Women,1176.0
+Jabalpur,Children,466.3333333333333
+Jabalpur,SC,98.66666666666667
+Jabalpur,ST,33.666666666666664
+Jabalpur,Senior Citizens,0.0
+Jabalpur,Women,930.3333333333334
+Jamshedpur,Children,23.666666666666668
+Jamshedpur,SC,11.666666666666666
+Jamshedpur,ST,22.333333333333332
+Jamshedpur,Senior Citizens,0.0
+Jamshedpur,Women,328.3333333333333
+Jodhpur,Children,312.0
+Jodhpur,SC,226.33333333333334
+Jodhpur,ST,40.333333333333336
+Jodhpur,Senior Citizens,0.6666666666666666
+Jodhpur,Women,1251.3333333333333
+Kannur,Children,126.33333333333333
+Kannur,SC,10.0
+Kannur,ST,2.0
+Kannur,Senior Citizens,9.0
+Kannur,Women,411.0
+Kollam,Children,173.0
+Kollam,SC,46.333333333333336
+Kollam,ST,0.0
+Kollam,Senior Citizens,76.0
+Kollam,Women,717.0
+Kota,Children,315.0
+Kota,SC,141.33333333333334
+Kota,ST,45.333333333333336
+Kota,Senior Citizens,1.6666666666666667
+Kota,Women,1018.3333333333334
+Ludhiana,Children,272.0
+Ludhiana,SC,5.666666666666667
+Ludhiana,ST,0.0
+Ludhiana,Senior Citizens,6.0
+Ludhiana,Women,529.0
+Madurai,Children,129.33333333333334
+Madurai,SC,31.333333333333332
+Madurai,ST,0.0
+Madurai,Senior Citizens,3.0
+Madurai,Women,271.6666666666667
+Malappuram,Children,190.0
+Malappuram,SC,16.333333333333332
+Malappuram,ST,2.3333333333333335
+Malappuram,Senior Citizens,13.0
+Malappuram,Women,404.0
+Meerut,Children,193.0
+Meerut,SC,75.33333333333333
+Meerut,ST,0.0
+Meerut,Senior Citizens,0.0
+Meerut,Women,682.6666666666666
+Nasik,Children,363.3333333333333
+Nasik,SC,18.0
+Nasik,ST,6.666666666666667
+Nasik,Senior Citizens,140.66666666666666
+Nasik,Women,552.3333333333334
+Prayagraj,Children,62.333333333333336
+Prayagraj,SC,79.66666666666667
+Prayagraj,ST,0.0
+Prayagraj,Senior Citizens,2.3333333333333335
+Prayagraj,Women,513.0
+Raipur,Children,500.0
+Raipur,SC,10.333333333333334
+Raipur,ST,8.0
+Raipur,Senior Citizens,127.33333333333333
+Raipur,Women,665.6666666666666
+Rajkot,Children,151.33333333333334
+Rajkot,SC,64.66666666666667
+Rajkot,ST,5.666666666666667
+Rajkot,Senior Citizens,7.666666666666667
+Rajkot,Women,322.6666666666667
+Ranchi,Children,43.666666666666664
+Ranchi,SC,17.666666666666668
+Ranchi,ST,43.333333333333336
+Ranchi,Senior Citizens,0.0
+Ranchi,Women,330.3333333333333
+Srinagar,Children,102.0
+Srinagar,SC,0.0
+Srinagar,ST,0.0
+Srinagar,Senior Citizens,6.0
+Srinagar,Women,404.0
+Thiruvananthapuram,Children,187.0
+Thiruvananthapuram,SC,45.0
+Thiruvananthapuram,ST,0.6666666666666666
+Thiruvananthapuram,Senior Citizens,37.666666666666664
+Thiruvananthapuram,Women,619.6666666666666
+Thrissur,Children,261.3333333333333
+Thrissur,SC,49.0
+Thrissur,ST,1.3333333333333333
+Thrissur,Senior Citizens,135.0
+Thrissur,Women,790.6666666666666
+Tiruchirapalli,Children,83.0
+Tiruchirapalli,SC,14.0
+Tiruchirapalli,ST,0.0
+Tiruchirapalli,Senior Citizens,31.333333333333332
+Tiruchirapalli,Women,111.0
+Vadodara,Children,121.33333333333333
+Vadodara,SC,38.666666666666664
+Vadodara,ST,11.666666666666666
+Vadodara,Senior Citizens,10.0
+Vadodara,Women,252.0
+Varanasi,Children,187.66666666666666
+Varanasi,SC,76.66666666666667
+Varanasi,ST,0.0
+Varanasi,Senior Citizens,103.0
+Varanasi,Women,649.0
+Vasai Virar,Children,710.0
+Vasai Virar,SC,10.666666666666666
+Vasai Virar,ST,6.0
+Vasai Virar,Senior Citizens,89.66666666666667
+Vasai Virar,Women,1063.3333333333333
+Vijayawada,Children,375.3333333333333
+Vijayawada,SC,68.66666666666667
+Vijayawada,ST,17.666666666666668
+Vijayawada,Senior Citizens,360.3333333333333
+Vijayawada,Women,2017.6666666666667
+Vishakhapatnam,Children,160.0
+Vishakhapatnam,SC,101.66666666666667
+Vishakhapatnam,ST,7.0
+Vishakhapatnam,Senior Citizens,47.333333333333336
+Vishakhapatnam,Women,1405.3333333333333
