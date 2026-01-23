@@ -1,0 +1,92 @@
+/* Pastel Color Palette for Crime Vulnerability Dashboard */
+:root {
+  /* Primary Colors - Pastel Blues & Teals */
+  --primary-50: #e6f3ff;
+  --primary-100: #cce6ff;
+  --primary-200: #99d1ff;
+  --primary-300: #66bdff;
+  --primary-400: #33a8ff;
+  --primary-500: #0094ff;
+  --primary-600: #007ad9;
+  --primary-700: #0060b3;
+  --primary-800: #00478c;
+  --primary-900: #002d66;
+
+  /* Secondary Colors - Pastel Greens & Purples */
+  --secondary-50: #f0f9f2;
+  --secondary-100: #e1f2e6;
+  --secondary-200: #c3e3cc;
+  --secondary-300: #a5d4b3;
+  --secondary-400: #87c599;
+  --secondary-500: #69b680;
+  --secondary-600: #57a06d;
+  --secondary-700: #458a5a;
+  --secondary-800: #337447;
+  --secondary-900: #215e34;
+
+  /* Neutral Colors - Soft Pastel Grays */
+  --neutral-50: #f8f9fa;
+  --neutral-100: #f1f3f5;
+  --neutral-200: #e9ecef;
+  --neutral-300: #dee2e6;
+  --neutral-400: #ced4da;
+  --neutral-500: #adb5bd;
+  --neutral-600: #868e96;
+  --neutral-700: #495057;
+  --neutral-800: #343a40;
+  --neutral-900: #212529;
+
+  /* Accent Colors - Pastel Reds & Oranges for warnings */
+  --accent-danger-50: #fdf2f2;
+  --accent-danger-100: #fce2e2;
+  --accent-danger-200: #fad1d1;
+  --accent-danger-300: #f8c0c0;
+  --accent-danger-400: #f6afaf;
+  --accent-danger-500: #f49e9e;
+  --accent-danger-600: #e07b7b;
+  --accent-danger-700: #cc5858;
+  --accent-danger-800: #b83535;
+  --accent-danger-900: #a41212;
+
+  /* Pastel Success & Warning Colors */
+  --success-color: #a5d6a7;
+  --warning-color: #fff176;
+  --info-color: #81d4fa;
+  
+  /* Chart Colors - Pastel Palette */
+  --chart-blue: #80deea;       /* Pastel Blue */
+  --chart-teal: #80cbc4;       /* Pastel Teal */
+  --chart-green: #a5d6a7;      /* Pastel Green */
+  --chart-purple: #ce93d8;     /* Pastel Purple */
+  --chart-orange: #ffb74d;     /* Pastel Orange */
+  --chart-pink: #f48fb1;       /* Pastel Pink */
+  --chart-red: #ef9a9a;        /* Pastel Red */
+  --chart-yellow: #fff59d;     /* Pastel Yellow */
+  
+  /* Severity Colors - Pastel Gradient from low to high risk */
+  --severity-low: #e8f5e9;     /* Light green */
+  --severity-low-medium: #f1f8e9; /* Light yellow-green */
+  --severity-medium: #fff9c4;  /* Light yellow */
+  --severity-high-medium: #ffecb3; /* Light orange */
+  --severity-high: #ffebee;    /* Light red */
+
+  /* UI Elements */
+  --border-radius: 8px;
+  --box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --box-shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --box-shadow-heavy: 0 8px 16px rgba(0, 0, 0, 0.12);
+
+  /* Backgrounds - Light pastel themes */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fdff;
+  --bg-card: #ffffff;
+  --bg-sidebar: #f0f7fc;
+  --bg-header: #f0f8f5;
+  
+  /* Text Colors */
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --text-on-primary: #ffffff;
+  --text-on-accent: #ffffff;
+}

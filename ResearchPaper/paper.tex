@@ -1,0 +1,220 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage[utf8]{inputenc}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{Data-Driven Crime Vulnerability Assessment for Indian Cities and Vulnerable Groups}
+
+\author{
+\IEEEauthorblockN{Rishabh Singh}
+\IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
+\textit{SRM Institute of Science and Technology}\\
+Ghaziabad, India \\
+}
+\and
+\IEEEauthorblockN{Nehul Agarwal}
+\IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
+\textit{SRM Institute of Science and Technology}\\
+Ghaziabad, India \\
+}
+\and
+\IEEEauthorblockN{Archit Raghav}
+\IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
+\textit{SRM Institute of Science and Technology}\\
+Ghaziabad, India \\
+}
+\and
+\IEEEauthorblockN{Farah Masoodi}
+\IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
+\textit{SRM Institute of Science and Technology}\\
+Ghaziabad, India \\
+}
+}
+
+\maketitle
+
+\begin{abstract}
+Rapid urbanization in India has been accompanied by heterogeneous crime patterns across cities and vulnerable population groups such as women, children, senior citizens, Scheduled Castes (SC), and Scheduled Tribes (ST). Law enforcement agencies increasingly require data-driven tools that move beyond descriptive statistics and provide interpretable measures of crime risk to support planning and resource allocation. In this paper, we develop a modular, data-driven framework for crime analysis and vulnerability assessment using official records from the National Crime Records Bureau (NCRB) for the period 2021--2023.
+
+First, we implement an end-to-end Extract--Transform--Load (ETL) pipeline that consolidates multiple NCRB tables into a unified, machine-readable dataset at the city--year--group level, with rigorous data cleaning and consistency checks. We then construct group-specific vulnerability scores and aggregate them into a composite City Vulnerability Index (CVI) that quantifies relative exposure to crime across major Indian cities. The framework produces ranked lists of cities and population groups, temporal trends, and spatial visualizations that highlight high-risk areas and groups.
+
+The proposed system provides transparent and actionable indicators for law enforcement agencies, enabling them to identify crime hotspots for vulnerable groups, prioritize interventions, and support evidence-based policy design. The framework is extensible and can be integrated with predictive models in future work to forecast changes in vulnerability under alternative scenarios.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Crime analysis, crime vulnerability, vulnerable groups, urban safety, law enforcement, India
+\end{IEEEkeywords}
+
+\section{Introduction}
+Crime is a persistent challenge to public safety, social stability, and economic development, particularly in rapidly urbanizing regions. As Indian cities expand and become more densely populated, crime patterns exhibit substantial spatial and temporal heterogeneity across neighbourhoods and demographic groups. For law enforcement agencies, it is no longer sufficient to rely solely on retrospective reporting and ad-hoc statistics; there is a growing need for systematic, data-driven tools that can characterize crime risk, reveal underlying patterns, and support proactive resource allocation and preventive interventions.
+
+The increasing availability of digital crime records and open government data has enabled the use of data-driven methods in crime analysis. Prior research has demonstrated that machine learning and statistical techniques can help model crime trends, identify hotspots, and forecast future incidents. Existing studies have explored classification models, ensemble methods, temporal forecasting, and the use of social media data to detect or predict crime. While these approaches highlight the potential of advanced analytics, many focus primarily on prediction accuracy or on specific crime types, often using limited datasets or producing outputs that are not easily interpretable for operational decision-making.
+
+An area that has received comparatively less attention is the comprehensive assessment of crime vulnerability. Crime does not affect all places and groups equally; some cities and population groups are consistently more exposed to certain types of offences than others. Vulnerability frameworks that combine multiple crime indicators into interpretable composite scores can provide valuable insights for strategic planning and policy design. Such frameworks can be especially useful when they incorporate vulnerable populations, such as women, children, senior citizens, SC, and ST, for whom targeted interventions are often required.
+
+In India, the National Crime Records Bureau (NCRB) publishes detailed statistics on crime across various categories, cities, and years. However, these data are typically spread across multiple tables and reports, with heterogeneous formats that complicate large-scale, comparative analysis. As a result, they are underutilized in systematic, quantitative assessments of city-level vulnerability for different population groups.
+
+In this work, we address these gaps by proposing a data-driven framework that (i) consolidates multi-year NCRB crime records into a unified city-level dataset, (ii) constructs interpretable vulnerability scores for key population groups, and (iii) aggregates these scores into a City Vulnerability Index (CVI) to rank Indian cities by crime exposure for vulnerable groups. The framework emphasizes data quality, transparency of index construction, and actionable outputs such as city and group rankings, trends, and visualizations. It also establishes a foundation upon which predictive models and more advanced analytical components can be integrated in future work.
+
+\section{Literature Review}
+A substantial body of research has examined crime prediction and analysis using machine learning, deep learning, and data-driven approaches. Early work such as Shah et al.\cite{b1} combines computer vision and machine learning for crime forecasting and prevention, demonstrating the potential of high-capacity models but also highlighting challenges related to computational cost and deployment in routine law-enforcement settings. Several subsequent studies focus on evaluating families of algorithms rather than proposing end-to-end operational systems. For example, Jenga et al.\cite{b2} and Mandalapu et al.\cite{b4} provide systematic reviews of machine learning and deep learning techniques for crime prediction, synthesizing results across dozens of prior studies and identifying common modelling choices and evaluation practices.
+
+Other work targets specific forecasting or classification tasks on structured crime records. Karima et al.\cite{b3} use a fuzzy time series model to forecast crime cases in India, while Sridharan et al.\cite{b5}, Sankul et al.\cite{b7}, and Abubakera et al.\cite{b8} explore a variety of supervised learning models for crime and arrest prediction on public datasets. These studies typically emphasize predictive performance metrics such as accuracy, precision, recall, or error rates, and are often limited either by the size and richness of the available datasets or by their focus on a single jurisdiction or crime type.
+
+In parallel, there is a complementary line of work that uses unstructured data sources. Abdalrdha et al.\cite{b6} propose a hybrid CNN--LSTM and XGBoost architecture to detect crime-related content from Twitter, illustrating how social-media streams can be mined to support situational awareness. However, these approaches are less suited to structured, official crime statistics and rarely attempt to construct interpretable, composite measures of crime risk at the city or group level.
+
+Table~\ref{tab:litreview} summarizes the main characteristics of these representative studies, including their methodological focus, data sources, and key limitations.
+
+\begin{table*}[htbp]
+\caption{Summary of Related Work in Crime Prediction and Analysis}
+\label{tab:litreview}
+\centering
+\small
+\begin{tabular}{p{2.2cm} p{2.7cm} p{4.0cm} p{3.0cm} p{4.0cm}}
+\toprule
+\textbf{Reference (Year)} & \textbf{Focus of Study} & \textbf{Methodology / Approach} & \textbf{Data Used} & \textbf{Limitations Identified} \\
+\midrule
+Shah et al. (2021) & Crime forecasting and prevention & Machine learning and computer vision techniques & Crime data with visual inputs & High computational complexity; limited practicality for routine law enforcement \\
+Jenga et al. (2023) & Review of ML techniques for crime prediction & Systematic literature review & 68 existing research studies & No experimental validation; dependent on prior studies \\
+Karima et al. (2025) & Forecasting crime cases in India & Fuzzy Time Series (Chen model) & Indian crime data & Limited handling of multiple influencing factors \\
+Mandalapu et al. (2023) & Comparison of ML and DL for crime prediction & Systematic review and analysis & Multiple datasets from prior studies & Did not propose a unified analytical framework \\
+Sridharan et al. (2023) & Crime trend prediction & Traditional machine learning models & Crime datasets & Relied on limited datasets \\
+Abdalrdha et al. (2023) & Crime detection from social media & Hybrid CNN--LSTM with XGBoost & Twitter crime-related text data & Not suitable for structured crime record analysis \\
+Sankul et al. (2025) & Arrest prediction using crime data & Supervised machine learning classification & Crime and arrest records & Focused on arrest outcomes, not crime vulnerability \\
+Abubakera et al. (2025) & Crime prediction using classification model & Multiple classification approaches & Public crime datasets & Limited interpretability; focused mainly on accuracy \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Existing literature thus provides valuable insights into modelling choices and predictive performance, but it predominantly treats crime as a point prediction problem rather than as a multidimensional vulnerability issue. To the best of our knowledge, there is limited work that constructs an interpretable, city-level vulnerability index that jointly considers multiple vulnerable population groups using multi-year official crime statistics for Indian cities. The framework proposed in this paper is designed to address this gap by focusing on vulnerability assessment and ranking, while remaining compatible with downstream predictive modelling.
+
+\section{Data and Study Area}
+
+\subsection{Data Source}
+This study uses official crime statistics published by the National Crime Records Bureau (NCRB) of India for the years 2021--2023. We focus on crimes recorded in major Indian cities and disaggregate incidents for five vulnerable population groups: women, children, senior citizens, Scheduled Castes (SC), and Scheduled Tribes (ST). The raw data are obtained from multiple NCRB tables, which report annual counts of crimes by city, offence category, and population group.
+
+\subsection{Target Population and Spatial Units}
+The primary spatial units of analysis are large and medium-sized Indian cities for which consistent data are available across the study period. For each city, we construct group-specific crime indicators using the corresponding population denominators where available, yielding crime rates per 100{,}000 population. The vulnerable groups considered in this work---women, children, senior citizens, SC, and ST---are selected based on policy relevance and data availability in NCRB publications.
+
+\subsection{Preprocessing and Integration}
+We implement an Extract--Transform--Load (ETL) pipeline to convert heterogeneous NCRB tables into a unified, machine-readable dataset. The pipeline performs (i) schema harmonization across years and tables, (ii) cleaning of inconsistent city names and offence categories, (iii) aggregation of crime counts at the city--year--group level, and (iv) merging with auxiliary data required for rate computation. The resulting dataset forms the basis for subsequent vulnerability scoring and index construction.
+
+\section{Methodology}
+
+\subsection{Group Vulnerability Score}
+For each city $c$, year $t$, and vulnerable group $g$, we denote by $y_{c,t,g,k}$ the crime rate (per 100{,}000 population) for offence category $k$. Let $\mathcal{K}_g$ be the set of offence categories relevant to group $g$. We first normalize each crime rate across cities to obtain a comparable scale, for example using min--max normalization:
+\[
+\tilde{y}_{c,t,g,k}
+= \frac{y_{c,t,g,k} - \min_{c'} y_{c',t,g,k}}{\max_{c'} y_{c',t,g,k} - \min_{c'} y_{c',t,g,k} + \epsilon},
+\]
+where $\epsilon$ is a small constant to avoid division by zero. The group vulnerability score for city $c$ and group $g$ is then defined as
+\[
+V_{c,g} = \frac{1}{|\mathcal{K}_g|} \sum_{k \in \mathcal{K}_g} \tilde{y}_{c,t,g,k},
+\]
+i.e., the average normalized crime rate across all relevant offence categories.
+
+\subsection{City Vulnerability Index (CVI)}
+To obtain a single index that summarizes overall crime vulnerability at the city level, we aggregate the group-specific scores using weights $w_g$ that reflect the relative importance of each vulnerable group:
+\[\text{CVI}_c = \sum_{g} w_g V_{c,g}, \quad \text{with} \quad \sum_{g} w_g = 1, \; w_g \ge 0.\]
+In the baseline analysis, we assign equal weights to all vulnerable groups. The resulting $\text{CVI}_c$ is a unit-free index that allows ranking cities by their relative exposure to crimes against vulnerable populations.
+
+\subsection{Ranking and Trend Analysis}
+Based on $\text{CVI}_c$, we compute a cross-sectional ranking of cities for the pooled period 2021--2023. In addition, using the time-indexed scores $V_{c,g,t}$, we analyse temporal trends and volatility for each city--group pair, identifying cities where vulnerability is both high and unstable over time. These outputs are subsequently visualized through ranked tables, line charts, and maps in the broader system.
+
+\section{Results and Discussion}
+
+\subsection{City-Level Vulnerability Rankings}
+Using the constructed City Vulnerability Index (CVI), we rank all cities in the sample by their overall exposure to crimes against vulnerable groups. The top-ranked cities exhibit substantially higher CVI scores than the median, indicating concentrated risk in a subset of urban areas. Conversely, some cities maintain relatively low vulnerability across all groups, suggesting that institutional capacity, socio-economic conditions, or preventive measures may be more effective in those contexts.
+
+\begin{table}[htbp]
+\caption{Top 10 Cities by City Vulnerability Index (CVI)}
+\label{tab:top_cities_cvi}
+\centering
+\small
+\begin{tabular}{l l c}
+\toprule
+\textbf{Rank} & \textbf{City} & \textbf{CVI} \\
+\midrule
+1  & Bhopal           & 0.306 \\
+2  & Vijayawada       & 0.304 \\
+3  & Gwalior          & 0.233 \\
+4  & Faridabad        & 0.227 \\
+5  & Jodhpur          & 0.206 \\
+6  & Vishakhapatnam   & 0.202 \\
+7  & Vasai Virar      & 0.185 \\
+8  & Kota             & 0.168 \\
+9  & Jabalpur         & 0.161 \\
+10 & Agra             & 0.148 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Group-Level Vulnerability}
+Aggregating vulnerability scores across cities reveals systematic differences between population groups. In our dataset, women tend to exhibit the highest average vulnerability scores, followed by children, while senior citizens, SC, and ST groups show comparatively lower but non-negligible exposure. These differences likely reflect both underlying patterns of victimization and group-specific reporting behaviours. The group-level rankings highlight where targeted interventions and focused policy attention are most urgently required.
+
+\begin{table}[htbp]
+\caption{Vulnerability Ranking by Population Group}
+\label{tab:group_vulnerability}
+\centering
+\small
+\begin{tabular}{l l c}
+\toprule
+\textbf{Rank} & \textbf{Group} & \textbf{Vulnerability Score} \\
+\midrule
+1 & Women           & 0.305 \\
+2 & Children        & 0.115 \\
+3 & Senior Citizens & 0.025 \\
+4 & SC              & 0.024 \\
+5 & ST              & 0.004 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Temporal Trends and Volatility}
+In addition to cross-sectional rankings, the framework computes temporal trends and volatility measures for each city--group pair. Time series of group vulnerability scores highlight whether a city's risk profile is improving, deteriorating, or remaining stable over the study period. A volatility index summarises the magnitude of year-to-year fluctuations in vulnerability. Cities that combine high average CVI with high volatility warrant special attention, as they may experience recurrent surges in crime against vulnerable groups that are difficult to anticipate using static indicators alone.
+
+These temporal diagnostics support early-warning style monitoring by allowing law enforcement agencies to track whether interventions are associated with sustained reductions in vulnerability, or whether new hotspots are emerging over time. When combined with spatial visualisations, they provide a comprehensive picture of how crime risks evolve across both space and time.
+
+\subsection{Implications for Law Enforcement}
+The proposed framework yields interpretable indicators that can be directly used by law enforcement agencies and policymakers. High-CVI cities and high-risk groups can be prioritized for targeted interventions such as enhanced patrols, awareness campaigns, and victim support services. At the same time, the index highlights cities where vulnerability is increasing over time, signalling the need for early policy responses. Because the framework is modular and based on open data and transparent computations, it can be regularly updated as new crime statistics become available.
+
+\subsection{Limitations and Future Work}
+The analysis is constrained by the quality and granularity of official crime statistics, potential under-reporting, and the availability of population denominators. The vulnerability index does not explicitly account for socio-economic covariates, spatial dependence between cities, or unreported incidents. Future work can integrate additional data sources such as census indicators, mobility data, and citizen reports; incorporate spatial econometric models; and extend the framework with predictive components to forecast changes in vulnerability under policy or demographic scenarios.
+
+\section{Conclusion}
+This paper presented a data-driven framework for crime vulnerability assessment in Indian cities, with a focus on vulnerable population groups. By designing an ETL pipeline for NCRB crime data, constructing group-specific vulnerability scores, and aggregating them into a City Vulnerability Index (CVI), the framework provides interpretable and actionable indicators for ranking cities and groups by crime exposure. The approach is transparent, modular, and suitable for regular updates as new data become available. In future work, the framework can be extended with forecasting models and additional explanatory variables to support more comprehensive, evidence-based crime prevention strategies.
+
+\begin{thebibliography}{00}
+
+\bibitem{b1} N. Shah, N. Bhagat, and M. Shah, ``Crime forecasting: A machine learning and computer vision approach to crime prediction and prevention,'' \textit{Visual Computing for Industry, Biomedicine, and Art}, vol. 4, no. 9, 2021.
+
+\bibitem{b2} K. Jenga, C. Catal, and G. Kar, ``Machine learning in crime prediction,'' \textit{Journal of Ambient Intelligence and Humanized Computing}, vol. 14, pp. 2887--2913, 2023.
+
+\bibitem{b3} A. Karima, A. Zulfia, T. S. A. Sukiman, and A. Ulya, ``Prediction of crime cases in 2025 in India using the fuzzy time series Chen model method,'' \textit{Brilliance: Research of Artificial Intelligence}, vol. 5, no. 1, pp. 74--85, 2025.
+
+\bibitem{b4} V. Mandalapu, L. Elluri, P. Vyas, and N. Roy, ``Crime prediction using machine learning and deep learning: A systematic review and future directions,'' \textit{IEEE Access}, vol. 11, pp. 60153--60170, 2023.
+
+\bibitem{b5} S. Sridharan, N. Srish, S. Vigneswaran, and P. Santhi, ``Crime prediction using machine learning,'' \textit{EAI Endorsed Transactions on Internet of Things}, vol. 10, 2023.
+
+\bibitem{b6} Z. K. Abdalrdha, A. M. Al-Bakry, and A. K. Farhan, ``A hybrid CNN--LSTM and XGBoost approach for crime detection in tweets using an intelligent dictionary,'' \textit{Revue d'Intelligence Artificielle}, vol. 37, no. 6, pp. 1651--1661, 2023.
+
+\bibitem{b7} R. Sankul, T. R. Aruva, S. V. Kankal, G. Arrapogula, and S. K. Mohammed, ``Crime data analysis and prediction of arrest using machine learning,'' \textit{World Journal of Advanced Research and Reviews}, vol. 25, no. 2, pp. 498--506, 2025.
+
+\bibitem{b8} H. Abubakera et al., ``Crime prediction based on classification approaches,'' \textit{Procedia Computer Science}, vol. 259, pp. 1407--1415, 2025.
+
+\end{thebibliography}
+
+\end{document}
