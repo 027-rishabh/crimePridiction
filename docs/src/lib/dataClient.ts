@@ -31,12 +31,18 @@ export type PolicyInsights = {
   interpretation_notes: string[]
 }
 
+const BASE_URL = import.meta.env.BASE_URL ?? '/'
+
+function dataUrl(name: string) {
+  return `${BASE_URL}data/${name}`
+}
+
 function csvUrl(name: string) {
-  return `/data/${name}`
+  return dataUrl(name)
 }
 
 function jsonUrl(name: string) {
-  return `/data/${name}`
+  return dataUrl(name)
 }
 
 export async function fetchCsv<T = Record<string, unknown>>(name: string): Promise<T[]> {
