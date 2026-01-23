@@ -6,11 +6,14 @@ import { TrendsPage } from './pages/TrendsPage'
 import { HeatmapPage } from './pages/HeatmapPage'
 import { CviPage } from './pages/CviPage'
 import { RankingsPage } from './pages/RankingsPage'
+import { GlobalFilterBar } from './components/GlobalFilterBar'
+import { FiltersProvider } from './lib/filtersContext'
 
 function App() {
   return (
-    <div className="app-root">
-      <aside className="sidebar">
+    <FiltersProvider>
+      <div className="app-root">
+        <aside className="sidebar">
         <div className="brand">
           <span className="brand-title">Crime Vulnerability Analysis</span>
           <span className="brand-subtitle">Indian Metropolitan Cities, 2021–2023</span>
@@ -37,6 +40,7 @@ function App() {
         </nav>
       </aside>
       <main className="content">
+        <GlobalFilterBar />
         <Routes>
           <Route path="/" element={<OverviewPage />} />
           <Route path="/data-health" element={<DataHealthPage />} />
@@ -47,6 +51,7 @@ function App() {
         </Routes>
       </main>
     </div>
+    </FiltersProvider>
   )
 }
 

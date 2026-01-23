@@ -1,22 +1,35 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { loadCityYearGroupTrends, loadPolicyInsights, type CityYearGroupRecord, type PolicyInsights } from '../lib/dataClient'
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts'
+import { useFilters } from '../lib/filtersContext'
+import { KpiCard } from '../components/KpiCard'
 
 export function OverviewPage() {
   const [trends, setTrends] = useState<CityYearGroupRecord[]>([])
   const [insights, setInsights] = useState<PolicyInsights | null>(null)
+  const { year, group } = useFilters()
 
   useEffect(() => {
     loadCityYearGroupTrends().then(setTrends).catch(console.error)
     loadPolicyInsights().then(setInsights).catch(console.error)
   }, [])
 
-  const years = Array.from(new Set(trends.map((d) => d.Year))).sort()
-  const summaryByYear = years.map((year) => {
-    const subset = trends.filter((d) => d.Year === year)
+  const filteredTrends = useMemo(() => {
+    return trends.filter((d) => {
+      const yearOk = year === 'all' || d.Year === year
+      const groupOk = group === 'all' || d.Group === group
+      return yearOk && groupOk
+    })
+  }, [trends, year, group])
+
+  const years = Array.from(new Set(filteredTrends.map((d) => d.Year))).sort()
+  const summaryByYear = years.map((y) => {
+    const subset = filteredTrends.filter((d) => d.Year === y)
     const avg = subset.reduce((acc, d) => acc + d.Crime_Rate, 0) / (subset.length || 1)
-    return { Year: year, AvgCrimeRate: avg }
+    return { Year: y, AvgCrimeRate: avg }
   })
+
+  const totalCities = useMemo(() => new Set(trends.map((d) => d.City)).size, [trends])
 
   return (
     <div className="page">
@@ -26,41 +39,31 @@ export function OverviewPage() {
           Research-grade exploratory dashboard summarising crime exposure across vulnerable groups in Indian
           metropolitan cities (2021–2023).
         </p>
+        <p className="method-note">
+          Note: all crime metrics are expressed as crime rates (incidents per lakh population of the relevant group),
+          not absolute case counts, to allow fair comparison across cities of different sizes.
+        </p>
       </header>
 
       <section className="cards-row">
-        <div className="card">
-          <h2>Coverage</h2>
-          <p>
-            {insights ? (
-              <>
-                <strong>{insights.n_cities}</strong> cities, 3 years, 5 vulnerable groups
-              </>
-            ) : (
-              'Loading…'
-            )}
-          </p>
-        </div>
-        <div className="card">
-          <h2>Highest-risk cities (overall CVI)</h2>
-          <ul>
-            {insights?.top_high_risk_cities.slice(0, 3).map((c) => (
-              <li key={c.City}>
-                <strong>{c.City}</strong> – CVI {c.CVI_Overall.toFixed(3)}
-              </li>
-            )) || <li>Loading…</li>}
-          </ul>
-        </div>
-        <div className="card">
-          <h2>Most vulnerable groups</h2>
-          <ul>
-            {insights?.most_vulnerable_groups.map((g) => (
-              <li key={g.Group}>
-                <strong>{g.Group}</strong>
-              </li>
-            )) || <li>Loading…</li>}
-          </ul>
-        </div>
+        <KpiCard
+          title="Coverage"
+          value={insights ? `${insights.n_cities} cities` : '–'}
+          subtitle="3 years · 5 vulnerable groups"
+        />
+        <KpiCard
+          title="Highest-risk city (overall CVI)"
+          value={insights ? insights.top_high_risk_cities[0]?.City ?? '–' : '–'}
+          subtitle={
+            insights ? `CVI ${insights.top_high_risk_cities[0]?.CVI_Overall.toFixed(3) ?? ''}` : 'Based on composite index'
+          }
+          accent="danger"
+        />
+        <KpiCard
+          title="Most vulnerable group"
+          value={insights ? insights.most_vulnerable_groups[0]?.Group ?? '–' : '–'}
+          subtitle={`${totalCities} cities in sample`}
+        />
       </section>
 
       <section className="chart-section">

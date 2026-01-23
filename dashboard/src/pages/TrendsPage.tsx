@@ -1,22 +1,41 @@
 import { useEffect, useMemo, useState } from 'react'
 import { loadCityYearGroupTrends, type CityYearGroupRecord } from '../lib/dataClient'
+import { useFilters } from '../lib/filtersContext'
+import { GroupChips } from '../components/GroupChips'
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, Legend, BarChart, Bar } from 'recharts'
 
 export function TrendsPage() {
   const [trends, setTrends] = useState<CityYearGroupRecord[]>([])
   const [selectedCity, setSelectedCity] = useState<string>('Bhopal')
   const [selectedGroup, setSelectedGroup] = useState<string>('Women')
+  const { year, group } = useFilters()
 
   useEffect(() => {
     loadCityYearGroupTrends().then(setTrends).catch(console.error)
   }, [])
 
   const cities = useMemo(() => Array.from(new Set(trends.map((d) => d.City))).sort(), [trends])
-  const groups = useMemo(() => Array.from(new Set(trends.map((d) => d.Group))).sort(), [trends])
 
-  const cityGroupSeries = trends.filter((d) => d.City === selectedCity && d.Group === selectedGroup)
-  const latestYear = useMemo(() => (trends.length ? Math.max(...trends.map((d) => d.Year)) : 2023), [trends])
-  const latestYearCityComparison = trends.filter((d) => d.Year === latestYear && d.Group === selectedGroup)
+  const effectiveGroup = group === 'all' ? selectedGroup : group
+  const effectiveYear = year === 'all' ? undefined : year
+
+  const cityGroupSeries = trends.filter((d) => {
+    const cityOk = d.City === selectedCity
+    const groupOk = d.Group === effectiveGroup
+    const yearOk = effectiveYear === undefined || d.Year === effectiveYear
+    return cityOk && groupOk && yearOk
+  })
+
+  const latestYear = useMemo(() => {
+    if (effectiveYear !== undefined) return effectiveYear
+    return trends.length ? Math.max(...trends.map((d) => d.Year)) : 2023
+  }, [trends, effectiveYear])
+
+  const latestYearCityComparison = trends.filter((d) => {
+    const groupOk = d.Group === effectiveGroup
+    const yearOk = d.Year === latestYear
+    return groupOk && yearOk
+  })
 
   return (
     <div className="page">
@@ -39,15 +58,9 @@ export function TrendsPage() {
             ))}
           </select>
         </label>
-        <label>
+        <label className="chip-label">
           Vulnerable group
-          <select value={selectedGroup} onChange={(e) => setSelectedGroup(e.target.value)}>
-            {groups.map((group) => (
-              <option key={group} value={group}>
-                {group}
-              </option>
-            ))}
-          </select>
+          <GroupChips value={effectiveGroup as any} onChange={(g) => setSelectedGroup(g === 'all' ? 'Women' : g)} />
         </label>
       </section>
 

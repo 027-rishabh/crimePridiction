@@ -1,4 +1,4 @@
-"""Ranking utilities and policy insight generation."""
+"""Ranking & Insight generation."""
 from __future__ import annotations
 
 from typing import Dict
@@ -9,9 +9,9 @@ from .utils import write_json
 
 
 def rank_cities(cvi_city_year: pd.DataFrame, cvi_city_overall: pd.DataFrame, output_dir) -> None:
-    """Rank cities by CVI per year and overall and write CSV outputs."""
+    """Rank cities by CVI and writing to CSV outputs."""
 
-    # Per-year ranking
+    # Ranking per year
     per_year = (
         cvi_city_year.copy()
         .sort_values(["Year", "CVI"], ascending=[True, False])

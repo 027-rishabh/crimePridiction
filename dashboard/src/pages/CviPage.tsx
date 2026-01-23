@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { fetchCsv } from '../lib/dataClient'
+import { useFilters } from '../lib/filtersContext'
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, BarChart, Bar } from 'recharts'
 
  type CviYearRecord = {
@@ -18,6 +19,7 @@ export function CviPage() {
   const [, setCviOverall] = useState<CviOverallRecord[]>([])
   const [selectedCity, setSelectedCity] = useState<string>('Bhopal')
   const [selectedYear, setSelectedYear] = useState<number>(2023)
+  const { year } = useFilters()
 
   useEffect(() => {
     fetchCsv<CviYearRecord>('cvi_city_year.csv').then(setCviYear).catch(console.error)
@@ -27,8 +29,10 @@ export function CviPage() {
   const cities = useMemo(() => Array.from(new Set(cviYear.map((d) => d.City))).sort(), [cviYear])
   const years = useMemo(() => Array.from(new Set(cviYear.map((d) => d.Year))).sort(), [cviYear])
 
+  const effectiveYear = year === 'all' ? selectedYear : year
+
   const seriesCity = cviYear.filter((d) => d.City === selectedCity)
-  const seriesYear = cviYear.filter((d) => d.Year === selectedYear).sort((a, b) => b.CVI - a.CVI)
+  const seriesYear = cviYear.filter((d) => d.Year === effectiveYear).sort((a, b) => b.CVI - a.CVI)
 
   return (
     <div className="page">
@@ -86,7 +90,7 @@ export function CviPage() {
 
       <section className="chart-section">
         <header>
-          <h2>CVI by city in {selectedYear}</h2>
+          <h2>CVI by city in {effectiveYear}</h2>
           <p>
             Cross-sectional ranking of cities by CVI in a given year. This can be used to identify high-priority cities
             for intervention.
@@ -98,8 +102,14 @@ export function CviPage() {
               <CartesianGrid strokeDasharray="3 3" stroke="#333" />
               <XAxis dataKey="City" angle={-45} textAnchor="end" height={120} stroke="#ccc" />
               <YAxis stroke="#ccc" />
-              <Tooltip />
-              <Bar dataKey="CVI" fill="#e57373" />
+              <Tooltip
+                formatter={(value) => [
+                  typeof value === 'number' ? value.toFixed(3) : String(value ?? ''),
+                  'CVI',
+                ]}
+                labelFormatter={(label) => String(label)}
+              />
+              <Bar dataKey="CVI" fill="#f97316" />
             </BarChart>
           </ResponsiveContainer>
         </div>

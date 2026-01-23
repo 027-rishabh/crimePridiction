@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, CircleMarker, Tooltip } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useEffect, useMemo, useState } from 'react'
 import { fetchCsv } from '../lib/dataClient'
+import { useFilters } from '../lib/filtersContext'
 
 const AnyMapContainer = MapContainer as any
 const AnyTileLayer = TileLayer as any
@@ -20,6 +21,7 @@ export function HeatmapPage() {
   const [data, setData] = useState<GeoRecord[]>([])
   const [selectedYear, setSelectedYear] = useState<number>(2023)
   const [selectedGroup, setSelectedGroup] = useState<string>('Women')
+  const { year, group } = useFilters()
 
   useEffect(() => {
     fetchCsv<GeoRecord>('geo_city_group_year.csv').then(setData).catch(console.error)
@@ -28,7 +30,10 @@ export function HeatmapPage() {
   const years = useMemo(() => Array.from(new Set(data.map((d) => d.Year))).sort(), [data])
   const groups = useMemo(() => Array.from(new Set(data.map((d) => d.Group))).sort(), [data])
 
-  const filtered = data.filter((d) => d.Year === selectedYear && d.Group === selectedGroup)
+  const effectiveYear = year === 'all' ? selectedYear : year
+  const effectiveGroup = group === 'all' ? selectedGroup : group
+
+  const filtered = data.filter((d) => d.Year === effectiveYear && d.Group === effectiveGroup)
   const maxCrime = filtered.reduce((acc, d) => Math.max(acc, d.Crime_Rate), 0)
 
   return (

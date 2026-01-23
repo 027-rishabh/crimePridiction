@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchCsv, loadPolicyInsights, type PolicyInsights } from '../lib/dataClient'
+import { useFilters } from '../lib/filtersContext'
+import { RiskBadge } from '../components/RiskBadge'
 
  type CityRanking = {
   City: string
@@ -18,7 +20,8 @@ export function RankingsPage() {
   const [cityRankings, setCityRankings] = useState<CityRanking[]>([])
   const [groupRankings, setGroupRankings] = useState<GroupRanking[]>([])
   const [insights, setInsights] = useState<PolicyInsights | null>(null)
-  const [selectedYear, setSelectedYear] = useState<number | 'overall'>(2023)
+  const [selectedYear, setSelectedYear] = useState<number>(2023)
+  const { year } = useFilters()
 
   useEffect(() => {
     fetchCsv<CityRanking>('rankings_cities.csv').then(setCityRankings).catch(console.error)
@@ -26,15 +29,14 @@ export function RankingsPage() {
     loadPolicyInsights().then(setInsights).catch(console.error)
   }, [])
 
-  const years = Array.from(new Set(cityRankings.map((r) => r.Year))).sort()
+  const years = Array.from(new Set(cityRankings.map((r) => Number(r.Year)))).sort((a, b) => a - b)
 
-  const filteredCities =
-    selectedYear === 'overall'
-      ? []
-      : cityRankings
-          .filter((r) => r.Year === selectedYear)
-          .sort((a, b) => a.Rank - b.Rank)
-          .slice(0, 20)
+  const effectiveYear = year === 'all' ? selectedYear : year
+
+  const filteredCities = cityRankings
+    .filter((r) => r.Year === effectiveYear)
+    .sort((a, b) => a.Rank - b.Rank)
+    .slice(0, 20)
 
   const sortedGroups = [...groupRankings].sort((a, b) => a.Rank - b.Rank)
 
@@ -62,7 +64,7 @@ export function RankingsPage() {
           <ol>
             {insights?.top_high_risk_cities.map((c) => (
               <li key={c.City}>
-                {c.City} (CVI {c.CVI_Overall.toFixed(3)})
+                {c.City} (CVI {typeof c.CVI_Overall === 'number' ? c.CVI_Overall.toFixed(3) : '–'})
               </li>
             )) || <li>Loading…</li>}
           </ol>
@@ -78,9 +80,9 @@ export function RankingsPage() {
           <label>
             Year
             <select value={selectedYear} onChange={(e) => setSelectedYear(Number(e.target.value))}>
-              {years.map((year) => (
-                <option key={year} value={year}>
-                  {year}
+              {years.map((y) => (
+                <option key={`year-${y}`} value={y}>
+                  {y}
                 </option>
               ))}
             </select>
@@ -100,7 +102,9 @@ export function RankingsPage() {
                 <tr key={`${row.City}-${row.Year}`}>
                   <td>{row.Rank}</td>
                   <td>{row.City}</td>
-                  <td>{row.CVI.toFixed(3)}</td>
+                  <td>
+                    {typeof row.CVI === 'number' ? row.CVI.toFixed(3) : '–'} <RiskBadge value={row.CVI} />
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -130,7 +134,11 @@ export function RankingsPage() {
                 <tr key={g.Group}>
                   <td>{g.Rank}</td>
                   <td>{g.Group}</td>
-                  <td>{g.Group_Vulnerability_Score.toFixed(3)}</td>
+                  <td>
+                    {typeof g.Group_Vulnerability_Score === 'number'
+                      ? g.Group_Vulnerability_Score.toFixed(3)
+                      : '–'}
+                  </td>
                 </tr>
               ))}
             </tbody>
