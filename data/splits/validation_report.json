@@ -1,0 +1,75 @@
+{
+  "validation_timestamp": "2026-02-01T11:00:49.091993",
+  "datasets": {
+    "train": {
+      "path": "train_data.csv",
+      "records": 17379,
+      "features": 195,
+      "years": "2017-2021"
+    },
+    "test": {
+      "path": "test_data.csv",
+      "records": 3688,
+      "features": 195,
+      "years": "2022-2022"
+    }
+  },
+  "validation_checks": {
+    "missing_values": true,
+    "feature_consistency": true,
+    "data_ranges": false,
+    "target_distribution": "acceptable"
+  },
+  "issues": [],
+  "warnings": [
+    "assault_on_adult_women: test [0.0, 96.0] outside train [0.0, 95.0]",
+    "inslt_women_modesty: test [0.0, 17.0] outside train [0.0, 7.0]",
+    "arson: test [0.0, 12.0] outside train [0.0, 10.0]",
+    "criminal_intimidation: test [0.0, 402.0] outside train [0.0, 337.0]",
+    "missng_children_kidnapped: test [0.0, 181.0] outside train [0.0, 12.0]",
+    "kidnp_abduction_purpose_begging: test [0.0, 8.0] outside train [0.0, 6.0]",
+    "rape_children_blw_18_yrs: test [0.0, 36.0] outside train [0.0, 24.0]",
+    "intimidate_humiliate: test [0.0, 449.0] outside train [0.0, 345.0]",
+    "prvnt_usage_pub_place_passage: test [0.0, 300.0] outside train [0.0, 117.0]",
+    "cruelty_by_husband_or_his_relatives: test [0.0, 1704.0] outside train [0.0, 1697.0]",
+    "human_trafficking: test [0.0, 148.0] outside train [0.0, 103.0]",
+    "rape_girls_below_18: test [0.0, 375.0] outside train [0.0, 370.0]",
+    "insult_to_the_modesty_of_women_above_18: test [0.0, 647.0] outside train [0.0, 575.0]",
+    "insult_to_the_modesty_of_women_below_18: test [0.0, 218.0] outside train [0.0, 193.0]",
+    "child_sexual_harassment: test [0.0, 198.0] outside train [0.0, 87.0]",
+    "use_of_child_for_pornography: test [0.0, 148.0] outside train [0.0, 80.0]",
+    "indecent_representation_of_women: test [0.0, 10.0] outside train [0.0, 8.0]",
+    "kidnp_abductn_purpose_begging: test [0.0, 46.0] outside train [0.0, 32.0]",
+    "kidnp_abductn_minor_girls: test [0.0, 375.0] outside train [0.0, 370.0]",
+    "assault_women_intnt_outrage_modsty: test [0.0, 218.0] outside train [0.0, 207.0]",
+    "sec_4_6_pocso_act_boys: test [0.0, 64.0] outside train [0.0, 40.0]",
+    "sec_12_pocso_act_girls: test [0.0, 198.0] outside train [0.0, 87.0]",
+    "sec_12_pocso_act_boys: test [0.0, 16.0] outside train [0.0, 12.0]",
+    "sec_14_15_pocso_girls: test [0.0, 148.0] outside train [0.0, 80.0]",
+    "procur_induc_children_sake_prost: test [0.0, 7.0] outside train [0.0, 6.0]",
+    "detain_prsn_whr_prost_carried: test [0.0, 3.0] outside train [0.0, 2.0]",
+    "crimes_per_district: test [0.0, 5256.0] outside train [0.0, 5065.0]",
+    "year_normalized: test [1.0, 1.0] outside train [0.0, 0.8]",
+    "years_since_2017: test [5.0, 5.0] outside train [0.0, 4.0]",
+    "year_position: test [0.0, 57.0] outside train [0.0, 47.0]",
+    "state_total_crimes: test [23.0, 79746.0] outside train [11.0, 75495.0]",
+    "district_total_crimes: test [0.0, 5256.0] outside train [0.0, 5065.0]"
+  ],
+  "target_statistics": {
+    "train": {
+      "mean": 141.28873928304276,
+      "std": 210.49185355073854,
+      "min": 0.0,
+      "max": 742.0,
+      "median": 40.0
+    },
+    "test": {
+      "mean": 151.2781995661605,
+      "std": 220.37471882787796,
+      "min": 0.0,
+      "max": 742.0,
+      "median": 44.0
+    }
+  },
+  "status": "PASS"
+}

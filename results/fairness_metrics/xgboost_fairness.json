@@ -1,0 +1,70 @@
+{
+  "overall": {
+    "mae": 1.8336189244654912,
+    "rmse": 4.127665043519854,
+    "r2": 0.9996490840348092,
+    "mape": 5.781418956435287
+  },
+  "by_group": {
+    "SC": {
+      "mae": 1.107288710677765,
+      "rmse": 2.4550797587857924,
+      "r2": 0.9993245832183182,
+      "mape": 6.601756166123105,
+      "count": 934
+    },
+    "ST": {
+      "mae": 0.29671076194466917,
+      "rmse": 0.6345791301152921,
+      "r2": 0.999297317715866,
+      "mape": 8.513577254536111,
+      "count": 890
+    }
+  },
+  "fairness_gap": 0.8105779487330957,
+  "fairness_ratio": 3.7318791654892953,
+  "training_time_seconds": 6.904448986053467,
+  "training_time_minutes": 0.11507414976755778,
+  "top_10_features": [
+    {
+      "feature": "total_crimes_rolling_mean_3y",
+      "importance": 0.7594326734542847
+    },
+    {
+      "feature": "total_crimes_rolling_mean_2y",
+      "importance": 0.16383184492588043
+    },
+    {
+      "feature": "total_crimes_yoy_change",
+      "importance": 0.03669289872050285
+    },
+    {
+      "feature": "group_proportion",
+      "importance": 0.02547548897564411
+    },
+    {
+      "feature": "total_crimes_rolling_std_2y",
+      "importance": 0.008765028789639473
+    },
+    {
+      "feature": "total_crimes_rolling_std_3y",
+      "importance": 0.004227588418871164
+    },
+    {
+      "feature": "crimes_per_district",
+      "importance": 0.0001396482839481905
+    },
+    {
+      "feature": "total_crimes_lag_2",
+      "importance": 0.00012203995720483363
+    },
+    {
+      "feature": "kidnp_abductn_order_to_murder",
+      "importance": 6.079467129893601e-05
+    },
+    {
+      "feature": "other_offences_juveniles",
+      "importance": 5.130560020916164e-05
+    }
+  ]
+}

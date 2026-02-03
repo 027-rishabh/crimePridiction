@@ -1,0 +1,13 @@
+{
+  "overall": {
+    "mae": 4.650119716212863,
+    "rmse": 9.11511272156717,
+    "r2": 0.9985322495770766,
+    "mape": 32.91470274537786
+  },
+  "by_group": {},
+  "fairness_gap": 0.0,
+  "fairness_ratio": 1.0,
+  "training_time_seconds": 414.1664021015167,
+  "training_time_minutes": 6.902773368358612
+}

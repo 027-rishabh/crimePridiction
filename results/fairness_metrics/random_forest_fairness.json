@@ -1,0 +1,70 @@
+{
+  "overall": {
+    "mae": 2.140111750388666,
+    "rmse": 5.631849988261198,
+    "r2": 0.9993467244730259,
+    "mape": 4.832144828048177
+  },
+  "by_group": {
+    "SC": {
+      "mae": 1.3725999794911683,
+      "rmse": 3.637863863479642,
+      "r2": 0.9985170260533075,
+      "mape": 5.88318937848192,
+      "count": 934
+    },
+    "ST": {
+      "mae": 0.28986054678341894,
+      "rmse": 0.7145342956831027,
+      "r2": 0.9991090904969852,
+      "mape": 6.018856252900046,
+      "count": 890
+    }
+  },
+  "fairness_gap": 1.0827394327077493,
+  "fairness_ratio": 4.735380494941114,
+  "training_time_seconds": 7.191990613937378,
+  "training_time_minutes": 0.11986651023228963,
+  "top_10_features": [
+    {
+      "feature": "total_crimes_rolling_mean_3y",
+      "importance": 0.5911709913058574
+    },
+    {
+      "feature": "total_crimes_rolling_mean_2y",
+      "importance": 0.3100066455966657
+    },
+    {
+      "feature": "total_crimes_yoy_change",
+      "importance": 0.061575905510743094
+    },
+    {
+      "feature": "group_proportion",
+      "importance": 0.031217399334411623
+    },
+    {
+      "feature": "total_crimes_rolling_std_2y",
+      "importance": 0.004294786673879723
+    },
+    {
+      "feature": "total_crimes_rolling_std_3y",
+      "importance": 0.0012008740832150065
+    },
+    {
+      "feature": "crimes_per_district",
+      "importance": 0.00010565524566883408
+    },
+    {
+      "feature": "district_total_crimes",
+      "importance": 9.609092665141037e-05
+    },
+    {
+      "feature": "total_crimes_prev_year",
+      "importance": 3.07730561997367e-05
+    },
+    {
+      "feature": "total_crimes_lag_1",
+      "importance": 2.635429949982879e-05
+    }
+  ]
+}

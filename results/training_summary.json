@@ -1,0 +1,63 @@
+{
+  "total_time_minutes": 13.84587177435557,
+  "models_completed": 6,
+  "models_total": 6,
+  "individual_results": {
+    "SARIMA": {
+      "success": true,
+      "time": 8.553107261657715
+    },
+    "Prophet": {
+      "success": true,
+      "time": 118.38997745513916
+    },
+    "Random Forest": {
+      "success": true,
+      "time": 12.173067092895508
+    },
+    "XGBoost": {
+      "success": true,
+      "time": 11.822027683258057
+    },
+    "CNN-LSTM": {
+      "success": true,
+      "time": 257.55978989601135
+    },
+    "Transformer": {
+      "success": true,
+      "time": 422.25400018692017
+    }
+  },
+  "metrics_summary": {
+    "SARIMA": {
+      "mae": 166.60570514208004,
+      "r2": 0.0,
+      "fairness_gap": 20.847320832713336
+    },
+    "Prophet": {
+      "mae": 135.4615692390399,
+      "r2": 0.1910199777930468,
+      "fairness_gap": 17.59518379515653
+    },
+    "Random Forest": {
+      "mae": 2.140111750388666,
+      "r2": 0.9993467244730259,
+      "fairness_gap": 1.0827394327077493
+    },
+    "XGBoost": {
+      "mae": 1.8336189244654912,
+      "r2": 0.9996490840348092,
+      "fairness_gap": 0.8105779487330957
+    },
+    "CNN-LSTM": {
+      "mae": 23.83305636555159,
+      "r2": 0.9419466957465419,
+      "fairness_gap": 0.0
+    },
+    "Transformer": {
+      "mae": 4.650119716212863,
+      "r2": 0.9985322495770766,
+      "fairness_gap": 0.0
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "test_year_threshold": 2022,
+  "train": {
+    "records": 17379,
+    "years": "2017-2021",
+    "groups": {
+      "SC": 4389,
+      "Women": 4389,
+      "Children": 4382,
+      "ST": 4219
+    }
+  },
+  "test": {
+    "records": 3688,
+    "years": "2022-2022",
+    "groups": {
+      "SC": 934,
+      "Women": 933,
+      "Children": 931,
+      "ST": 890
+    }
+  },
+  "split_ratio": 0.21221013867311123
+}

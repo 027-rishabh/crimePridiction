@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-02-01T11:00:17.934521",
+  "train_records": 17379,
+  "test_records": 3688,
+  "train_features": 195,
+  "test_features": 195,
+  "missing_values_before": {
+    "train": "See validation_report.json",
+    "test": "See validation_report.json"
+  },
+  "missing_values_after": {
+    "train": 0,
+    "test": 0
+  },
+  "fill_strategy": {
+    "lag_features": "Fill with 0 for initial years",
+    "yoy_features": "Fill with 0 (assume no change)",
+    "rolling_mean": "Fill with current value",
+    "rolling_std": "Fill with 0 (no variation)"
+  }
+}

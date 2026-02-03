@@ -1,0 +1,22 @@
+# Data processing
+pandas>=1.5.0
+numpy>=1.23.0
+scikit-learn>=1.2.0
+
+# Statistical models
+statsmodels>=0.14.0
+prophet>=1.1.0
+
+# Tree-based models
+xgboost>=1.7.0
+
+# Deep learning
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Visualization (optional, for local plots)
+matplotlib>=3.6.0
+seaborn>=0.12.0
+
+# Utilities
+tqdm>=4.65.0

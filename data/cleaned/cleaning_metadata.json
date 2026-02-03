@@ -1,0 +1,42 @@
+{
+  "total_records": 21067,
+  "years": {
+    "min": 2017,
+    "max": 2022
+  },
+  "groups": {
+    "SC": 5323,
+    "Women": 5322,
+    "Children": 5313,
+    "ST": 5109
+  },
+  "outliers_handled": {
+    "violent_crimes": {
+      "count": 2962,
+      "upper_bound": 56.0,
+      "max_before": 56.0
+    },
+    "sexual_crimes": {
+      "count": 930,
+      "upper_bound": 0.0,
+      "max_before": 0.0
+    },
+    "property_crimes": {
+      "count": 930,
+      "upper_bound": 0.0,
+      "max_before": 0.0
+    },
+    "kidnapping_crimes": {
+      "count": 4126,
+      "upper_bound": 0.0,
+      "max_before": 0.0
+    },
+    "total_crimes": {
+      "count": 1171,
+      "upper_bound": 742.0,
+      "max_before": 742.0
+    }
+  },
+  "missing_values": "Filled with 0",
+  "excluded_districts": "CID, Railway, Crime Branch, etc."
+}

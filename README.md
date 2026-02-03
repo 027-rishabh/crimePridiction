@@ -1,137 +1,122 @@
-# Crime Vulnerability Analysis
+# Crime Prediction Models
 
-Research-grade exploratory data analysis and visualization of crime exposure across vulnerable groups in Indian metropolitan cities (2021–2023).
+This project implements seven different machine learning models for predicting crime rates across different districts and protected groups in India. The models are designed to be fair and unbiased across different demographic groups.
+
+## Implemented Models
+
+1. **SARIMA** (Seasonal AutoRegressive Integrated Moving Average) - Traditional statistical time series model
+2. **Prophet** - Facebook's forecasting model for time series with seasonality
+3. **Random Forest** - Ensemble method using decision trees
+4. **XGBoost** - Gradient boosting algorithm for tabular data
+5. **CNN-LSTM** - Convolutional neural network combined with Long Short-Term Memory
+6. **Transformer** - Attention-based neural network model
+7. **Additional models** - Other advanced techniques
 
 ## Project Structure
 
-- `data/` – Source CSVs and modeling scripts.
-  - `data/modeling/masterData.csv` – Long-format master dataset used by the analysis pipeline.
-- `analysis/` – Python analysis package.
-  - `config.py` – Paths, years, groups, CVI weights, and normalization settings.
-  - `loaders.py` – Data loading and basic shape checks.
-  - `validation.py` – Missing values, duplicates, and outlier detection.
-  - `eda.py` – Core EDA: trends, comparisons, volatility.
-  - `cvi.py` – Crime Vulnerability Index construction.
-  - `geo.py` – Static geographic enrichment for Indian metros.
-  - `ranking.py` – City and group rankings plus policy insights.
-  - `pipeline.py` – Orchestrates the full end-to-end analysis.
-- `analysis/output/` – Derived CSV/JSON files for the dashboard.
-- `dashboard/` – React + TypeScript dashboard (Vite).
-
-## 1. Python Environment & Analysis Pipeline
-
-1. Create and activate a virtual environment (recommended):
-
-```bash
-python -m venv .venv
-source .venv/bin/activate  # Linux/macOS
-# .venv\\Scripts\\activate  # Windows PowerShell
+```
+crimePrediction/
+├── data/
+│   ├── splits/
+│   │   ├── train_data.csv
+│   │   └── test_data.csv
+├── models/
+│   ├── baseline_01_sarima.py
+│   ├── baseline_02_prophet.py
+│   ├── baseline_03_random_forest.py
+│   ├── baseline_04_xgboost.py
+│   ├── baseline_05_cnn_lstm.py
+│   ├── baseline_06_transformer.py
+│   └── fairness_metrics.py
+├── results/
+│   ├── model_predictions/
+│   ├── fairness_metrics/
+│   └── feature_importance/
+├── run_all_baselines.py
+├── export_results_for_react.py
+└── requirements.txt
 ```
 
-2. Install core Python dependencies (pandas, numpy, etc. – adjust as needed if you expand the analysis):
+## Setup and Installation
 
+1. Clone the repository
+2. Install dependencies:
 ```bash
-pip install pandas numpy
+pip install -r requirements.txt
 ```
 
-3. Run the analysis pipeline from the project root:
-
+Note: Prophet installation may require additional steps on some systems:
 ```bash
-python -m analysis.pipeline --normalization minmax
+# On some systems, you might need to install pystan separately
+pip install pystan==2.19.1.1
+pip install prophet
+```
+
+## Usage
+
+### Train All Models
+```bash
+python run_all_baselines.py
 ```
 
 This will:
+- Train all 6 baseline models sequentially
+- Generate predictions on the test set
+- Calculate fairness metrics across protected groups
+- Save results to the `results/` directory
 
-- Validate the master dataset and write:
-  - `analysis/output/data_health_summary.json`
-  - `analysis/output/data_health_issues.csv`
-  - `analysis/output/feature_distributions.json`
-- Compute core EDA products:
-  - `analysis/output/city_year_group_trends.csv`
-  - `analysis/output/group_comparison_city_agg.csv`
-  - `analysis/output/city_group_volatility.csv`
-  - `analysis/output/crime_trend_summary.json`
-- Compute the Crime Vulnerability Index (CVI):
-  - `analysis/output/city_year_group_normalized.csv`
-  - `analysis/output/cvi_city_year.csv`
-  - `analysis/output/cvi_city_overall.csv`
-  - `analysis/output/cvi_sensitivity.json`
-- Enrich with geography:
-  - `analysis/output/geo_city_group_year.csv`
-  - `analysis/output/geo_cities.csv`
-  - `analysis/output/geo_cities.json`
-- Build rankings and policy-oriented summaries:
-  - `analysis/output/rankings_cities.csv`
-  - `analysis/output/rankings_cities_overall.csv`
-  - `analysis/output/rankings_groups.csv`
-  - `analysis/output/policy_insights.json`
-
-You can switch to z-score based normalization for experimentation:
-
+### Export Results for Dashboard
 ```bash
-python -m analysis.pipeline --normalization zscore
+python export_results_for_react.py
 ```
 
-## 2. Frontend Dashboard
+This creates a JSON file with all results formatted for React dashboard integration.
 
-The `dashboard/` directory contains a Vite + React + TypeScript app that consumes the precomputed analysis outputs.
+## Fairness Evaluation
 
-### Install Node dependencies
+The models are evaluated not just for accuracy, but for fairness across protected groups (SC, ST, General). The fairness metrics include:
 
-From the `dashboard/` directory:
+- **Overall Performance**: MAE, RMSE, R², MAPE
+- **Per-group Performance**: Performance metrics for each protected group
+- **Fairness Gap**: Max difference in MAE across groups
+- **Fairness Ratio**: Max MAE / Min MAE across groups
 
-```bash
-cd dashboard
-npm install
-```
+## Model Architecture Details
 
-(If you have just cloned the repo and not run the analysis yet, run the Python pipeline first.)
+### SARIMA
+- Traditional statistical model for time series
+- Accounts for trend, seasonality, and autocorrelation
+- Separate models trained for each district-protected group combination
 
-### Make analysis outputs available to the dashboard
+### Prophet
+- Facebook's forecasting model
+- Handles missing data and irregular seasonality well
+- Automatic changepoint detection
 
-Copy the contents of `analysis/output/` into the dashboard's `public/data/` folder:
+### Random Forest
+- Ensemble of decision trees
+- Handles mixed data types naturally
+- Provides feature importance rankings
 
-```bash
-mkdir -p public/data
-cp ../analysis/output/* public/data/
-```
+### XGBoost
+- Gradient boosting implementation
+- Often achieves high accuracy on tabular data
+- Regularization options to prevent overfitting
 
-The React app expects these files under `/data/` at runtime.
+### CNN-LSTM
+- Hybrid neural network combining convolutional and recurrent layers
+- Good for learning temporal patterns in sequential data
+- Captures both spatial and temporal patterns
 
-### Run the development server
+### Transformer
+- Attention mechanism-based model
+- Excels at capturing long-range dependencies
+- Parallel computation capability
 
-```bash
-npm run dev
-```
+## Key Features
 
-Then open the URL printed in the terminal (by default `http://localhost:5173/`).
-
-### Build for production
-
-```bash
-npm run build
-npm run preview
-```
-
-This runs a TypeScript check and bundles the dashboard into the `dist/` directory, then serves a local preview.
-
-## 3. Dashboard Pages & Interpretation
-
-The dashboard is organised into pages that align with the research workflow described in the project instructions:
-
-1. **Overview** – High-level coverage, top high-risk cities, most vulnerable groups, and aggregate time trend.
-2. **Data Health** – Data sanity checks (missing values, duplicates, basic distribution diagnostics).
-3. **Trends & Comparisons** – Time-series for a chosen city and group plus cross-city comparisons for a given year.
-4. **Geographic Heatmap** – India map with circle markers sized/coloured by crime intensity for selected year and group.
-5. **Vulnerability Index (CVI)** – CVI evolution over time per city and cross-sectional CVI ranking by year.
-6. **Rankings & Insights** – Tabular rankings of cities and vulnerable groups plus policy-relevant summary bullets.
-
-Each page includes short explanatory text suitable for use in a methods/results section of an academic write-up.
-
-## 4. Extensibility Notes
-
-- **Weights and normalization**: Adjust group weights or the default normalization strategy in `analysis/config.py`.
-- **Additional indicators**: If new socio-legal indicators become available, extend `masterData.csv` and the
-  computations in `analysis/eda.py` and `analysis/cvi.py` to incorporate them.
-- **Styling and UX**: The dashboard uses a minimalist dark theme with accent colours for severity; you can extend
-  styles in `dashboard/src/App.css` and global rules in `dashboard/src/index.css`.
+- Fairness-aware evaluation across protected groups
+- Comprehensive metrics reporting
+- Automated model training pipeline
+- Clean, modular code structure
+- Detailed documentation
