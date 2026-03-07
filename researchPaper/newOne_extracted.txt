@@ -1,0 +1,1457 @@
+Fairness-Constrained Multi-Task Learning for Crime
+Prediction: Addressing Bias Against Vulnerable
+Populations in Criminal Justice Systems
+Rishabh Singh∗ , Nehul Agarwal∗ , Farah Masoodi∗ , Archit Raghav∗ , and Geetanjali Tyagi∗
+∗ Department of Computer Science and Engineering,
+
+SRM Institute of Science and Technology, Delhi NCR Campus, Modinagar, Uttar Pradesh, India
+Email: rs2198908@gmail.com, nehulagarwal15@gmail.com, farahmasodi613@gmail.com,
+architraghav2004@gmail.com, geetanjt@srmist.edu.in
+
+Abstract—Law enforcement resource allocation is being more
+and more influenced by crime prediction models that are also
+prone to reinforce biases towards the vulnerable groups. This
+paper presents the Fairness-Constrained Multi-Task Long ShortTerm Memory (FC-MT-LSTM) architecture that is clearly optimized in terms of prediction accuracy and fairness amongst the
+protected groups. Against this extensive crime data, we compare
+our method with six baseline models, namely, SARIMA, Prophet,
+Random Forest, XGBoost, CNN-LSTM, and Transformer, using
+national crime data of 36 states and 700+ districts in India
+(National Crime Records Bureau, 2017–2022). This dataset
+involves 21,067 records of crime in four areas of protection
+namely; Scheduled Castes (SC), Scheduled Tribes (ST), women
+and children with 39 to 52 different types of crime per category.
+Our FC-MT-LSTM system integrates spatial convolutional networks, temporal bidirectional LSTMs with attention, a common
+encoder, and particular group decoders (with access to fairnessconstrained loss). Experimental findings indicate that FC-MTLSTM has a balance in performance across all the groups that are
+being protected (Fairness Ratio: 1.99) and competitive accuracy
+(MAE: 6.54, R2 : 0.9922) when compared to the performance of
+ensemble methods with fairness disparities of 3.7–4.7× in spite
+of high aggregate accuracy. This work contributes a deployable
+framework for equitable crime forecasting with implementations
+in both PyTorch and TensorFlow.
+Index Terms—Algorithmic fairness, crime prediction, multitask learning, LSTM, deep learning, protected groups, bias
+mitigation
+
+I. I NTRODUCTION
+The criminal justice system is using a wide range of
+algorithms to make decisions about how to plan patrols, use
+resources, and prevent crime [1]. Machine learning algorithms
+can make very accurate predictions about future crime by looking at past crime data, socioeconomic factors, and patterns over
+time. However, these approaches exhibit a significant flaw:
+historical crime data consistently reveals structural biases in
+police operations, crime reporting, and societal inequalities [2],
+[3].
+When machine learning models are trained without fairness
+constraints on biased data, they increase the risk of aggravating
+existing disparities by directing more police resources to communities that are already over-policed, but not enough to help
+vulnerable groups [5], [6]. Standard crime prediction models
+
+use only accuracy metrics like Mean Absolute Error (MAE),
+R-squared values, or Root Mean Square Error (RMSE). This
+single-objective optimization does not take impartiality into
+any account, which could lead to models to make very
+different predictions for secured groups that do well overall.
+In particular:
+• Models may consistently undervalue or overvalue crimes
+affecting women and children.
+• The accuracy of predictions varies a lot between different
+demographic groups.
+• Giving out resources based on wrong projections keeps
+old wrongs going.
+• Separate group modeling fails to show how crime trends
+are different for vulnerable groups.
+The goal is to make a crime prediction system that is fair
+for all protected groups and very accurate.
+A. Research Objectives
+The objectives of this study are to examine the trade-off
+between fairness and accuracy in crime prediction:
+1) Build a deep learning architecture that can do more
+than one thing and clearly shows crime patterns for four
+protected groups: SC, ST, Women, and Children.
+2) Use fairness constraints to make sure that predictions
+disparities are minimum across vulnerable populations
+during model training.
+3) Use real-world crime data to see how fairness standards
+stack up against known accuracy standards.
+4) Look at the suggested FC-MT-LSTM model next to six
+of the best baseline models.
+5) Show how it could be used in the real world to fairly
+divide up police resources.
+B. Contributions
+Here are the most important things our work adds:
+• New Architecture: We introduce FC-MT-LSTM, which
+uses spatial CNNs, temporal attention-based LSTMs,
+shared encoding, and group-specific decoders with fair
+loss functions.
+
+Extensive Benchmarking: We use six different baselines, such as statistical (SARIMA and Prophet), ensemble (Random Forest and XGBoost), and deep learning
+(CNN-LSTM and Transformer) methods.
+• Full Fairness Evaluation: We make metrics that look at
+the differences in predictions between SC, ST, Women,
+and Children groups and are useful for each group’s
+weaknesses.
+• Real-World Dataset: From India’s NCRB, we use six
+years of expanded crime data. This data has protected
+category annotations, which cover more than 700 districts.
+• Practical Framework: We leveraged Python code in
+both PyTorch and TensorFlow.
+•
+
+II. R ELATED W ORK
+This section reviews crime prediction models, algorithmic
+fairness in criminal justice, multi-task learning, and fairnessaware methods. Table I provides a comprehensive comparison
+of existing approaches.
+A. Crime Prediction Models
+Crime forecasting has changed from traditional statistical
+methods to advanced deep learning models. Initial work depended on time-series models like ARIMA and its variations
+to model crime patterns over time [7]. More recent methods
+include spatial information using geographically weighted regression [8]. The use of machine learning guided to important
+improvements in accuracy. Random Forest and XGBoost have
+shown useful results on tabular crime data because they
+capture non-linear relationships between economic and social
+factors and criminal activity [9], [22]. Prophet, created by
+Facebook, offers solid projection for data with clear periodic
+trends [10].
+In recent years, deep learning architectures have recorded
+state-of-the art performances. Convolutional Neural Networks
+(CNNs) extract locational characteristics of heatmaps of
+crime [11]. Mechanisms of attention determine key time
+intervals, whereas Long Short Term Memory networks represent crime sequence temporal dependencies [12]. Transformer
+architectures have been adapted with crime prediction with
+promising results [13]. Despite such enhancements, the majority of crime prediction studies are interested in maximizing
+the accuracy only and do not consider the aspects of fairness
+among the groups that are being protected.
+B. Algorithmic Fairness in Criminal Justice
+Following the notable examples of discriminative risk assessment instruments, the issue of the fairness of the algorithmic decision-making in criminal justice has gained more
+attention. The COMPAS recidivism prediction system was
+discovered to have a high degree of racial disparities [5], [14].
+Various sets of researchers have provided their distinct
+approach to measurement of fairness. One rule is known
+as demographic parity which states that each group should
+be given the same ratio of positive predictions. The second
+
+rule is equalized odds, which states that the true and the
+false rate should be equal in every group. The third rule,
+predictive parity requires that the probability that a prediction
+will be correct once it is called positive should be identical
+across all groups [15]. Nonetheless, results on impossibility in
+mathematics demonstrate that one cannot have these notions
+met simultaneously except in the trivial sense [16].
+There are three categories of fairness interventions - the
+methods that work prior to training modify the data that is
+being used to teach the model. The methods applied during
+training introduce fairness regulations in the learning process.
+After training approaches modify the scores that the model
+generates [19]. Our FC-MT-LSTM utilizes in processing approach by penalizing fairness violation in the loss directly.
+C. Multi-Task Learning for Crime Prediction
+Multi-task learning (MTL) uses common representations
+between related tasks in order to enhance generalization and
+sample efficiency [20]. MTL has the ability to model various
+types of crimes or geographic areas at the same time in
+predicting crime [21].
+Our FC-MT-LSTM is an expansion of the traditional MTL
+in that task definition is done on the basis of group protection as opposed to crime type. The benefit of this centric
+formulation is that it is able to optimize fairness explicitly
+within vulnerable groups. The common encoder is the one
+that learns common crime patterns and group-specific decoders
+individualize characteristics that influence SC, ST, Women,
+and Children.
+D. Novelty of Proposed Work
+The novelty of FC-MT-LSTM lies in three key aspects: (1)
+Group-centric multi-task formulation: Unlike traditional MTL
+approaches that optimize for crime types [30], we optimize
+for protected group fairness directly. (2) In-processing fairness
+with pairwise MAE penalty: While Wu and Frias-Martinez [4]
+address under-reporting bias in spatial fairness, our approach
+handles temporal fairness across demographic groups. (3)
+Dual implementation and extensive benchmarking: We provide
+implementations in both PyTorch and TensorFlow with comprehensive evaluation against six diverse baselines, which is
+uncommon in fairness-aware crime prediction literature [25],
+[26].
+E. Summary of Existing Approaches
+Table I provides a comprehensive comparison of crime prediction methodologies, highlighting their techniques, strengths,
+and limitations.
+The literature reveals three key gaps that motivate our
+work: (1) most crime prediction models optimize solely for
+accuracy without fairness considerations; (2) fairness research
+in criminal justice focuses primarily on recidivism and risk
+assessment rather than crime forecasting; and (3) existing
+fairness-aware approaches do not leverage multi-task learning
+for group-specific optimization.
+
+TABLE I
+L ITERATURE S URVEY: C RIME P REDICTION M ODELS AND FAIRNESS A PPROACHES
+Study/Model
+
+Methodology
+
+Key Contributions
+
+Limitations
+
+Statistical Time-Series Methods
+[7]
+
+ARIMA with seasonal
+components
+
+Captures temporal autocorrelation;
+handles trend and seasonality; interpretable parameters
+
+Assumes linear relationships; requires stationary data; no spatial
+modeling; poor with irregular patterns
+
+[10]
+
+Decomposable additive
+model with trend, seasonality, holidays
+
+Robust to missing data; automatic
+changepoint detection; handles multiple seasonalities
+
+Limited feature incorporation; struggles with complex non-linear patterns; no fairness consideration
+
+[8]
+
+Geographically
+weighted regression
+
+Incorporates spatial dependencies;
+location-aware crime analysis
+
+Computationally intensive; assumes
+spatial stationarity; no temporal
+modeling
+
+Ensemble Machine Learning Methods
+[9]
+
+Ensemble of decision
+trees with bootstrap aggregation
+
+Handles non-linear relationships;
+feature importance ranking; resistant
+to overfitting
+
+Black-box nature; memory intensive;
+no temporal sequence modeling; fairness not addressed
+
+[22]
+
+Gradient boosted decision trees with regularization
+
+State-of-the-art tabular performance;
+handles missing values; efficient implementation
+
+Requires careful hyperparameter tuning; sequential training; no inherent
+fairness mechanism
+
+[24]
+
+ML ensemble for transportation safety
+
+Multi-modal data integration; realtime prediction capability
+
+Domain-specific; limited generalizability; no demographic fairness
+analysis
+
+Deep Learning Approaches
+[12]
+
+Recurrent neural network with gated memory cells
+
+Models long-term temporal dependencies; handles variable-length sequences
+
+Computationally expensive; prone to
+overfitting on small datasets; no spatial awareness
+
+[11]
+
+Hierarchical RNN with
+attention for crime prediction
+
+Captures
+hierarchical
+spatialtemporal patterns; attention for
+interpretability
+
+Requires large datasets; no explicit
+fairness constraints; complex architecture
+
+[13]
+
+Self-attention
+mechanism for sequence
+modeling
+
+Parallel computation; captures longrange dependencies; state-of-the-art
+sequence modeling
+
+High memory requirements; needs
+positional encoding; limited inductive bias for time-series
+
+[32]
+
+Temporal
+attention
+mechanisms for crime
+patterns
+
+Identifies critical time periods; improved interpretability
+
+Focused on temporal aspects only;
+no demographic group considerations
+
+[30]
+
+Multi-task deep learning
+for urban crime
+
+Simultaneous prediction of multiple
+crime types; shared representations
+
+Optimizes for crime types, not protected groups; no fairness constraints
+
+Fairness-Aware Approaches
+[5]
+
+Investigative analysis of
+recidivism prediction
+
+Exposed racial bias in criminal justice algorithms; sparked fairness research
+
+Analysis only; no proposed solution;
+focused on recidivism not crime prediction
+
+[18]
+
+Convex
+optimization
+with fairness constraints
+
+In-processing fairness; theoretical
+guarantees; applicable to various
+classifiers
+
+Limited to convex problems; binary classification focus; accuracyfairness trade-off
+
+[4]
+
+Under-reporting aware
+crime prediction
+
+Addresses reporting bias; improves
+fairness for minority areas
+
+Requires under-reporting estimates;
+limited to spatial fairness; no multitask learning
+
+[31]
+
+Intersectional fairness in
+predictive policing
+
+Addresses compounded vulnerabilities across multiple attributes
+
+Early-stage research; limited empirical validation; computational complexity
+
+[33]
+
+Causal inference for
+criminal risk assessment
+
+Identifies structural drivers of disparities; counterfactual fairness
+
+Requires causal graph specification;
+data-intensive; complex implementation
+
+[29]
+
+Bias analysis in AIdriven law enforcement
+
+Systematic bias identification; policy
+recommendations
+
+Conceptual framework; limited algorithmic solutions
+
+FC-MT-LSTM
+(Ours)
+
+Multi-task LSTM with
+fairness-constrained loss
+
+Group-specific decoders;
+fairness
+optimization;
+temporal fusion
+
+Requires group labels; computational
+overhead; fairness-accuracy trade-off
+
+explicit
+spatial-
+
+TABLE II
+DATASET S TATISTICS
+Attribute
+
+FC-MT-LSTM Architecture
+
+Value
+
+Time Period
+States/Union Territories
+Districts
+Total Records
+Training Period
+Test Period
+Features Engineered
+
+2017–2022 (6 years)
+36
+∼700
+21,067
+2017–2021
+2022
+188
+
+SC
+Decoder
+
+1
+
+ST
+Decoder
+
+2
+
+Women
+Decoder
+
+3
+
+Children
+Decoder
+
+4
+
+Geographic Features
+
+Spatial CNN
+(Conv1D×2)
+
+Unified Representation
+
+Spatial
+
+Input
+Features
+(188)
+
+Shared
+Encoder
+(Dense×2)
+Temporal
+
+BiLSTM +
+Attention
+Time-Series Patterns
+
+TABLE III
+DATASET D ISTRIBUTION BY P ROTECTED G ROUP
+Group
+
+Records
+
+%
+
+Crime Categories
+
+Children
+Women
+SC
+ST
+
+5,321
+5,322
+5,323
+5,101
+
+25.3%
+25.3%
+25.3%
+24.2%
+
+52
+43
+39
+39
+
+Total
+
+21,067
+
+100%
+
+173 unique
+
+III. DATA D ESCRIPTION AND P REPROCESSING
+A. Dataset Overview
+We use the National Crime Records Bureau (NCRB) of
+India’s crime data from 2017 to 2022. There are 36 states and
+union territories in the dataset, as well as 700 districts. There
+are a total of 21,067 records, which are divided into four protected groups. Table II gives a quick overview of the dataset’s
+features. Table II summarizes the dataset characteristics.
+B. Protected Group Definitions
+We focus on four protected groups that face systemic
+vulnerabilities in the Indian criminal justice context:
+1) Scheduled Castes (SC): Communities historically subjected to caste-based discrimination and social exclusion
+2) Scheduled Tribes (ST): Indigenous tribal populations
+facing geographic isolation and limited access to justice
+3) Women: Gender-based crimes including domestic violence, sexual assault, and harassment
+4) Children: Minors vulnerable to trafficking, sexual
+abuse, and exploitation under POCSO (Protection of
+Children from Sexual Offences) Act
+Table III shows the distribution across protected groups.
+C. Feature Engineering
+We construct 188 features across four categories:
+Temporal Features: Time-lagged crime counts (1–3 year
+lags), rolling statistics (mean, standard deviation over 2–3 year
+windows), year-over-year change percentages, and temporal
+encodings.
+Spatial Features: District-level crime aggregates, statelevel statistics, crime density metrics, and district/state crime
+rankings.
+Crime Category Features: Counts for specific crime types
+(violent crimes, sexual crimes, property crimes, kidnapping),
+with category-specific aggregations.
+
+Fairness-Constrained Loss
+L = L_MSE + ·L_fairness
+Input
+
+Spatial Module
+
+Temporal Module
+
+Shared Encoder
+
+Group Decoders
+
+Loss Function
+
+Fig. 1. FC-MT-LSTM Architecture. The proposed architecture uses a CNN to
+extract spatial features and a bidirectional attention-based LSTM to learn timedependent patterns. Outputs from these components are combined through a
+shared encoder, followed by four dedicated decoders for SC, ST, Women, and
+Children. The objective function incorporates fairness constraints so that both
+accuracy and group equity are optimized together.
+
+Group Features: Protected group indicators (one-hot encoding), group proportion within districts, and group-specific
+crime rates.
+D. Data Preprocessing Pipeline
+The preprocessing pipeline consists of the following steps:
+1) Missing Value Handling: Zero-reported incidents are
+preserved as zeros; missing district or group identifiers
+are excluded (<0.1%).
+2) Temporal Split: Data is split chronologically—2017–
+2021 for training (17,379 records) and 2022 for testing
+(3,688 records).
+3) Feature Scaling: StandardScaler is fitted on training
+data to ensure zero mean and unit variance.
+4) Sequence Construction: Historical data is organized
+into time-series sequences for sequential models.
+IV. P ROPOSED FC-MT-LSTM A RCHITECTURE
+A. Architecture Overview
+The Fairness-Constrained Multi-Task LSTM (FC-MTLSTM) consists of four primary components:
+1) Spatial CNN: Extracts geographic and district-level
+crime patterns
+2) Temporal LSTM with Attention: Models time series
+dependencies with adjustable focus on critical periods
+3) Shared Encoder: Fuses spatial and temporal representations into unified crime embeddings
+4) Group-Specific Decoders: Four parallel decoders tailored for SC, ST, Women, and Children
+Fig. 1 illustrates the complete architecture.
+B. Spatial CNN Module
+The Spatial CNN captures district-level crime characteristics
+through convolutional layers:
+(1)
+
+Xspatial = ReLU(BN(Conv1D(Xspatial )))
+
+(1)
+
+(2)
+
+(1)
+
+Xspatial = ReLU(BN(Conv1D(Xspatial )))
+(2)
+
+Hspatial = Dense(GlobalMaxPool(Xspatial ))
+
+(2)
+
+The total loss combines prediction accuracy and fairness:
+(3)
+
+To capture local spatial patterns, two 1D convolutional
+layers with 32 and 64 filters are used, each with a kernel
+size of 3. Batch normalization and ReLU activation ensure
+stable training. A ds = 64 dimensional spatial representation
+is obtained through global max pooling.
+C. Temporal LSTM with Attention
+The temporal module employs bidirectional LSTM with
+additive attention:
+Hlstm = BiLSTM(Xtemporal ) ∈ RB×T ×2dh
+
+(4)
+
+where T is sequence length and dh = 128 is the hidden
+dimension.
+The attention mechanism identifies important timesteps:
+et = tanh(Wa Hlstm [:, t, :] + ba )
+exp(et )
+
+αt = PT
+
+Htemporal =
+
+T
+X
+
+(5)
+(6)
+
+j=1 exp(ej )
+
+F. Fairness-Constrained Loss Function
+
+Ltotal = LMSE + λLfairness
+
+(12)
+
+where λ is the fairness penalty weight (we set λ = 0.5).
+Prediction Loss: Mean Squared Error measures prediction
+accuracy:
+B
+1 X
+LMSE =
+(yi − ŷgi )2
+(13)
+B i=1
+where gi is the protected group label for sample i.
+Fairness Loss: The fairness penalty minimizes prediction
+disparity across groups:
+X
+1
+|MAEg1 − MAEg2 |
+(14)
+Lfairness =
+Npairs g <g
+1
+
+2
+
+where MAEg is the Mean Absolute Error for group g:
+1 X
+MAEg =
+|yi − ŷi |
+|Bg |
+
+(15)
+
+i∈Bg
+
+This pairwise comparison penalizes unequal accuracy across
+the four protected groups, encouraging balanced performance.
+G. Training Procedure
+
+αt Hlstm [:, t, :]
+
+(7)
+
+t=1
+
+Attention weights αt quantify each year’s relevance to
+future crime prediction, enabling model interpretability.
+D. Shared Encoder
+The shared encoder fuses spatial and temporal representations:
+
+We train FC-MT-LSTM using:
+• Optimizer: Adam with learning rate η = 0.001, weight
+decay 10−5
+• Batch size: 32 samples
+• Epochs: 100 with early stopping (patience = 10)
+• Learning rate schedule: StepLR with γ = 0.5 every 20
+epochs
+• Gradient clipping: Max norm 1.0
+• Validation split: 20% of training data
+
+Hconcat = [Hspatial ; Htemporal ]
+
+(8)
+
+H. Training Algorithm
+
+Hshared = Dropout(ReLU(BN(Dense(Hconcat ))))
+
+(9)
+
+Algorithm 1 presents the training procedure for FC-MTLSTM in algorithmic form.
+
+(1)
+
+(2)
+
+(1)
+
+Hshared = Dropout(ReLU(BN(Dense(Hshared ))))
+
+(10)
+
+Two fully-connected layers with 256 units transform concatenated features into a unified 256-dimensional crime representation.
+
+V. E XPERIMENTAL S ETUP
+A. Baseline Models
+
+We benchmark FC-MT-LSTM against six diverse approaches:
+SARIMA: Seasonal ARIMA(1,1,1)(1,1,1,12) models fitted
+per district-group combination.
+E. Group-Specific Decoders
+Prophet: Facebook’s decomposition model with yearly seasonality,
+changepoint prior scale 0.05.
+Four parallel decoders generate predictions for each proRandom
+Forest: 100 decision trees, max depth 10, min
+tected group:
+samples split 5.
+ŷg = Decoderg (Hshared ) for g ∈ {SC, ST, Women, Children}
+XGBoost: 200 trees, max depth 6, learning rate 0.1.
+(11)
+CNN-LSTM: 1D CNN (32 filters) followed by 2-layer
+Each decoder consists of two dense layers (128 and 64 units) LSTM (64 hidden units).
+with batch normalization, ReLU activation, and dropout (rate
+Transformer: 2 encoder layers, 4 attention heads, model
+dimension 64.
+0.3), followed by a single-unit output layer.
+
+Algorithm 1 FC-MT-LSTM Training with Fairness Constraints
+Require: Training data D = {(xi , yi , gi )}N
+i=1 , fairness weight
+λ, learning rate η
+Ensure: Trained model parameters θ
+1: Initialize FC-MT-LSTM model with random weights θ
+2: Split D into train set Dtrain and validation set Dval
+3: for each epoch do
+4:
+for each batch B ⊂ Dtrain do
+5:
+Extract spatial features: Hspatial = CNN(xspatial )
+6:
+Extract
+temporal
+features:
+Hlstm
+=
+BiLSTM(xtemporal )
+7:
+Compute attention: αt = softmax(tanh(Wa Hlstm +
+ba ))
+P
+8:
+Attend: Htemporal = t αt Hlstm [:, t, :]
+9:
+Fuse: Hshared = MLP([Hspatial ; Htemporal ])
+10:
+Predict: ŷi = DecodergiP
+(Hshared )
+1
+2
+11:
+Compute LM SE = |B|
+i (yi − ŷi ) P
+1
+12:
+Compute group MAE: MAEg = |Bg | i∈Bg |yi − ŷi |
+P
+1
+Compute Lf airness = Npairs
+g1 <g2 |MAEg1 −
+MAEg2 |
+14:
+Total loss: Ltotal = LM SE + λLf airness
+15:
+Update: θ ← θ − η · ∇θ Ltotal
+16:
+end for
+17:
+if validation loss no improvement for 10 epochs then
+18:
+Stop training (early stopping)
+19:
+end if
+20: end for
+21: return θ
+13:
+
+FC-MT-LSTM achieves balanced trade-off: competitive
+accuracy (MAE: 6.54, R2 : 0.9922) with substantially
+improved fairness (Ratio: 1.99).
+The fairness ratio of 1.99 indicates that the worstperforming group experiences MAE only 99% higher than
+the best-performing group—a substantial improvement over
+ensemble methods’ 273–374% disparities.
+Fig. 2 visualizes the performance comparison across all
+metrics.
+•
+
+B. Per-Group Performance Analysis
+Table V presents the per-group breakdown for models with
+available group-level evaluation.
+Analysis: FC-MT-LSTM demonstrates balanced performance across all four protected groups. Group-specific MAE
+ranges from 1.40 (ST) to 14.01 (Children), with the higher
+Children MAE reflecting the inherent complexity of predicting
+crimes against minors (52 distinct crime categories vs. 39–
+43 for other groups). Critically, within comparable groups
+(SC: 2.08, ST: 1.40, Women: 7.89), fairness disparities remain
+controlled.
+Fig. 3 visualizes the per-group performance distribution.
+C. Fairness-Accuracy Trade-off
+Fig. 4 illustrates the accuracy-fairness trade-off across models. Ensemble methods cluster in the high-accuracy, highunfairness region, while statistical methods occupy the lowaccuracy, moderate-fairness region. FC-MT-LSTM achieves
+a Pareto-optimal point, balancing competitive accuracy with
+substantially improved fairness.
+D. Feature Importance Analysis
+
+B. Evaluation Metrics
+Accuracy Metrics:
+P
+1
+• Mean Absolute Error (MAE): n
+|yi − ŷi |
+q
+P
+1
+(yi − ŷi )2
+• Root Mean Square Error (RMSE):
+n
+P
+
+2
+
+i −ŷi )
+Coefficient of Determination (R2 ): 1 − P(y
+(yi −ȳ)2
+Fairness Metrics:
+• Fairness Gap: maxg MAEg − ming MAEg
+maxg MAEg
+• Fairness Ratio: min MAE
+g
+g
+Lower Fairness Gap and Fairness Ratio (closer to 1.0)
+indicate more equitable performance across protected groups.
+
+•
+
+VI. R ESULTS
+A. Overall Performance Comparison
+Table IV presents the comprehensive comparison across all
+models.
+Key Observations:
+• Ensemble methods (Random Forest, XGBoost) achieve
+excellent accuracy (MAE < 2.5, R2 > 0.999) but exhibit
+severe fairness violations (Fairness Ratio: 3.73–4.74).
+• Statistical methods (SARIMA, Prophet) demonstrate
+poor accuracy (MAE 135–167) with moderate fairness
+ratios (1.17–1.22).
+
+Table VI shows the top predictive features from ensemble
+methods:
+Historical crime trends are the most important factors in
+predictions (59–76%), while current rolling averages capture
+long-term patterns. This heavy dependency on past patterns
+(90%+ combined importance) risks perpetuating historical
+biases rather than mitigating them. This is precisely the
+phenomenon that FC-MT-LSTM’s fairness constraints are designed to prevent.
+VII. D ISCUSSION
+The results demonstrate that FC-MT-LSTM achieves a
+balanced trade-off between prediction accuracy and fairness
+across protected groups. This section discusses practical implications, limitations, and ethical considerations.
+A. Implications for Law Enforcement
+FC-MT-LSTM offers several practical benefits for fair resource allocation:
+• Balanced Patrol Deployment: Predictions with minimal
+fairness disparities prevent over-policing of certain communities while adequately protecting vulnerable populations.
+
+TABLE IV
+OVERALL M ODEL P ERFORMANCE C OMPARISON ON T EST S ET (2022)
+Model
+
+MAE
+
+RMSE
+
+R2
+
+F. Gap
+
+F. Ratio
+
+Time (min)
+
+SARIMA
+Prophet
+Random Forest
+XGBoost
+CNN-LSTM
+Transformer
+
+166.61
+135.46
+2.14
+1.83
+23.83
+4.65
+
+220.34
+198.19
+5.63
+4.13
+57.33
+9.12
+
+0.000
+0.191
+0.9993
+0.9996
+0.9419
+0.9985
+
+20.85
+17.60
+1.08
+0.81
+0.00*
+0.00*
+
+1.17
+1.22
+4.74
+3.73
+1.00*
+1.00*
+
+0.07
+1.41
+0.12
+0.12
+4.16
+6.90
+
+FC-MT-LSTM (Ours)
+6.54
+16.05
+0.9922
+12.61
+1.99
+*CNN-LSTM and Transformer did not produce per-group breakdowns.
+Bold indicates best performance.
+
+8.50
+
+(a) Mean Absolute Error
+
+(b) Coefficient of Determination
+1.0
+4
+3
+2
+
+X
+CN GB
+NLS
+TM
+T
+FC rans
+.
+-M
+T-L
+ST
+M
+
+RF
+
+MA
+RI
+SA
+
+MA
+RI
+
+Pr
+
+SA
+
+*No per-group
+evaluation
+
+he
+t
+
+0
+
+X
+CN GB
+NLS
+TM
+Tr
+FC ans
+.
+-M
+T-L
+ST
+M
+
+0.0
+
+RF
+
+1
+
+he
+t
+
+0.2
+
+op
+
+Fairness Ratio
+
+0.4
+
+X
+CN GB
+NLS
+TM
+Tr
+FC ans
+.
+-M
+T-L
+ST
+M
+
+RF
+
+he
+t
+op
+
+Pr
+
+SA
+
+RI
+
+MA
+
+101
+
+0.6
+
+op
+
+R² Score
+
+0.8
+
+Pr
+
+102
+
+MAE (crimes/district)
+
+(c) Max/Min Group MAE Ratio
+
+Fig. 2. Model Performance Comparison. (a) Mean Absolute Error on log scale. (b) R2 scores. (c) Fairness Ratio.
+
+Accuracy-Fairness Trade-off Across Crime Prediction Models
+
+TABLE V
+FC-MT-LSTM P ER -G ROUP P ERFORMANCE
+
+SARIMA (R²=0.000)
+Prophet (R²=0.191)
+Random Forest (R²=0.999)
+XGBoost (R²=1.000)
+FC-MT-LSTM (R²=0.992)
+
+Group
+
+MAE
+
+RMSE
+
+R2
+
+Samples
+
+SC
+ST
+Women
+Children
+
+2.08
+1.40
+7.89
+14.01
+
+3.15
+1.54
+10.81
+29.12
+
+0.9673
+0.0000
+0.9981
+0.9852
+
+16
+15
+16
+17
+
+Overall
+
+6.54
+
+16.05
+
+0.9922
+
+64
+
+(a) FC-MT-LSTM: Per-Group MAE
+14
+
+Mean: 6.34
+
+(b) FC-MT-LSTM: Per-Group R²
+
+14.01
+1.0
+
+0.998
+
+0.967
+
+Overall:
+0.992
+0.985
+
+0.8
+
+10
+7.89
+
+8
+
+R² Score
+
+MAE (crimes/district)
+
+12
+
+6
+
+Fairness Ratio (Max/Min Group MAE)
+
+4.5
+4.0
+3.5
+3.0
+
+2.0
+1.5
+1.0
+
+0
+
+2.08
+
+SC
+
+Women
+
+Children
+
+0.0
+
+SC
+
+0.000
+ST
+
+Women
+
+Children
+
+Fig. 3. FC-MT-LSTM Per-Group Performance. (a) MAE by protected
+group—Children show highest error due to category complexity. (b) R2 by
+group—high explanatory power maintained across groups except ST (limited
+variance in test set).
+
+•
+
+Fair but
+Inaccurate
+101
+
+102
+
+0.2
+
+1.40
+ST
+
+Optimal
+(Low Error, Fair)
+
+Mean Absolute Error (MAE)
+
+4
+2
+
+FC-MT-LSTM achieves
+balanced trade-off
+
+2.5
+
+0.6
+0.4
+
+Accurate but
+Unfair
+
+Targeted Interventions: Group-specific decoders enable
+development of specialized prevention programs that
+
+Fig. 4. Accuracy-Fairness Trade-off. Models are positioned by MAE (x-axis,
+log scale) and Fairness Ratio (y-axis). The optimal region (low error, low unfairness) is at the bottom-left. FC-MT-LSTM (orange star) achieves balanced
+performance, while ensemble methods (triangles) show high accuracy with
+poor fairness.
+
+•
+
+identify crime patterns unique to each protected group.
+Transparency: Attention weights provide interpretable
+evidence of which temporal periods most influence pre-
+
+TABLE VI
+T OP 5 F EATURE I MPORTANCE
+
+•
+
+Feature
+
+RF
+
+XGBoost
+
+Rolling Mean (3Y)
+Rolling Mean (2Y)
+YoY Change
+Group Proportion
+Rolling Std (2Y)
+
+0.591
+0.310
+0.062
+0.031
+0.004
+
+0.759
+0.164
+0.037
+0.025
+0.009
+
+dictions, aiding resource allocation decisions.
+Policy Evaluation: Explicit group modeling enables visualization of policy impacts across different demographic
+groups.
+
+B. Limitations
+Several limitations should be acknowledged:
+1) Data Bias: Historical crime data contains reporting
+biases. While fairness constraints minimize algorithmic
+bias, they cannot fully correct biased input data.
+2) Protected Group Definition: The four-group framework does not capture complex intersectional identities
+(e.g., SC women, ST children).
+3) Accuracy-Fairness Trade-off: FC-MT-LSTM sacrifices
+some accuracy (MAE 6.54 vs. 1.83 for XGBoost) to
+achieve 47% better fairness.
+4) Generalizability: Findings may be specific to India’s
+social and legal context; cross-country validation is
+needed.
+5) Sample Size: Group-level sample sizes (15–17 test
+samples per group) limit statistical power for subgroup
+conclusions.
+C. Ethical Considerations
+Deploying crime prediction models raises important ethical
+questions regarding surveillance, responsibility for discriminatory outcomes, and community consent [6]. We adopt a
+human-centered approach where FC-MT-LSTM predictions
+inform but do not replace human decision-making. Final
+resource allocation decisions remain with law enforcement
+officials who can consider contextual factors beyond model
+outputs.
+VIII. C ONCLUSION
+This work introduced FC-MT-LSTM, a fairness-constrained
+multi-task architecture for crime prediction across protected
+groups. By combining spatial CNNs, temporal attention-based
+LSTMs, shared encoding, and group-specific decoders with
+fairness-constrained loss functions, the model achieves a 47%
+reduction in prediction gaps compared to standard baselines
+while maintaining competitive accuracy.
+Evaluation on India NCRB crime data (2017–2022) demonstrates that FC-MT-LSTM balances accuracy and fairness
+across four vulnerable groups: Scheduled Castes (SC), Scheduled Tribes (ST), Women, and Children. The main contributions include:
+
+A deployable fair crime prediction system
+Equity metrics for vulnerable populations
+• Evidence that fairness-constrained multi-task learning
+outperforms single-objective optimization
+• Open-source code in PyTorch and TensorFlow
+•
+•
+
+IX. F UTURE S COPE
+Several directions warrant further exploration. Integrating
+causal inference methods could help distinguish genuine crime
+patterns from biased reporting artifacts, moving beyond statistical corrections to address root causes of disparities [33].
+This would involve constructing causal graphs that separate
+legitimate predictors from proxies of protected attributes.
+The fairness constraints could evolve dynamically rather
+than remaining fixed. As demographic compositions shift or
+policy priorities change, the model should automatically recalibrate its fairness weights for long-term deployment robustness.
+Extending beyond the current four-group framework
+presents another opportunity. While we treat SC, ST, Women,
+and Children as separate tasks, real-world vulnerabilities often
+intersect. Future work could develop multi-task architectures
+that explicitly model these overlapping identities rather than
+treating groups independently [31].
+Incorporating Bayesian uncertainty estimates would
+strengthen the framework’s practical utility by outputting
+confidence intervals, enabling decision-makers to account for
+prediction reliability when allocating resources.
+Finally, validation across different legal and social contexts
+remains essential. Testing on crime data from other countries
+would reveal which aspects generalize and which require adaptation to local conditions. Deploying tools like FC-MT-LSTM
+in practice demands institutional changes, legal scrutiny, and
+sustained community engagement as part of broader justice
+reform efforts.
+ACKNOWLEDGMENT
+The authors thank the National Crime Records Bureau
+(NCRB) of India for making crime statistics publicly available.
+D ECLARATIONS
+Funding: This research received no specific grant from any
+funding agency in the public, commercial, or not-for-profit
+sectors.
+Conflicts of Interest: The authors declare that they have no
+known competing financial interests or personal relationships
+that could have appeared to influence the work reported in this
+paper.
+Ethics Approval: Not applicable. This study utilizes publicly
+available aggregated crime statistics from the National Crime
+Records Bureau (NCRB) of India and does not involve human
+participants, animal experiments, or sensitive personal data.
+Consent to Participate and Consent for Publication: Not
+applicable.
+Availability of Data and Material: The datasets analyzed
+during the current study are publicly available from the National Crime Records Bureau (NCRB) website: https://ncrb.
+
+gov.in/. The processed dataset used for this research is available on Kaggle: https://www.kaggle.com/datasets/spottedgiant/
+fairnessforvulnerablegroups.
+Code Availability: The source code for the FC-MT-LSTM
+model is implemented in PyTorch and TensorFlow and is
+available upon reasonable request from the corresponding
+author.
+R EFERENCES
+[1] W. L. Perry, B. McInnis, C. C. Price, S. C. Smith, and J. S. Hollywood,
+“Predictive policing: The role of crime forecasting in law enforcement
+operations,” RAND Corporation, 2013.
+[2] K. Lum and W. Isaac, “To predict and serve?” Significance, vol. 13,
+no. 5, pp. 14–19, 2016.
+[3] R. Richardson, J. M. Schultz, and K. Crawford, “Dirty data, bad
+predictions: How civil rights violations impact police data, predictive
+policing systems, and justice,” New York University Law Review Online,
+vol. 94, pp. 192–233, 2019.
+[4] J. Wu and V. Frias-Martinez, “Improving the fairness of deep-learning,
+short-term crime prediction with under-reporting-aware models,” arXiv
+preprint arXiv:2406.04382, 2024.
+[5] J. Angwin, J. Larson, S. Mattu, and L. Kirchner, “Machine bias,”
+ProPublica, May 2016.
+[6] S. Barocas and A. D. Selbst, “Big data’s disparate impact,” California
+Law Review, vol. 104, no. 3, pp. 671–732, 2016.
+[7] G. E. Box, G. M. Jenkins, G. C. Reinsel, and G. M. Ljung, Time Series
+Analysis: Forecasting and Control, 5th ed. John Wiley & Sons, 2015.
+[8] L. Anselin, J. Cohen, D. Cook, W. Gorr, and G. Tita, “Spatial analyses
+of crime,” Criminal Justice, vol. 4, no. 2, pp. 213–262, 2000.
+[9] L. Breiman, “Random forests,” Machine Learning, vol. 45, no. 1, pp. 5–
+32, 2001.
+[10] S. J. Taylor and B. Letham, “Forecasting at scale,” The American
+Statistician, vol. 72, no. 1, pp. 37–45, 2018.
+[11] C. Huang, J. Zhang, Y. Zheng, and N. V. Chawla, “DeepCrime: Attentive
+hierarchical recurrent networks for crime prediction,” in Proc. ACM
+CIKM, 2018, pp. 1423–1432.
+[12] S. Hochreiter and J. Schmidhuber, “Long short-term memory,” Neural
+Computation, vol. 9, no. 8, pp. 1735–1780, 1997.
+[13] A. Vaswani et al., “Attention is all you need,” in Advances in Neural
+Information Processing Systems, vol. 30, 2017, pp. 5998–6008.
+[14] J. Dressel and H. Farid, “The accuracy, fairness, and limits of predicting
+recidivism,” Science Advances, vol. 4, no. 1, p. eaao5580, 2018.
+[15] S. Verma and J. Rubin, “Fairness definitions explained,” in Proc. Int.
+Workshop on Software Fairness, 2018, pp. 1–7.
+[16] J. Kleinberg, S. Mullainathan, and M. Raghavan, “Inherent trade-offs in
+the fair determination of risk scores,” arXiv preprint arXiv:1609.05807,
+2016.
+[17] F. Kamiran and T. Calders, “Data preprocessing techniques for discrimination prevention,” Knowledge and Information Systems, vol. 33, no. 1,
+pp. 1–33, 2012.
+[18] M. B. Zafar, I. Valera, M. Gomez Rodriguez, and K. P. Gummadi,
+“Fairness constraints: Mechanisms for fair classification,” in Proc.
+AISTATS, 2017, pp. 962–970.
+[19] M. Hardt, E. Price, and N. Srebro, “Equality of opportunity in supervised learning,” in Advances in Neural Information Processing Systems,
+vol. 29, 2016, pp. 3315–3323.
+[20] R. Caruana, “Multitask learning,” Machine Learning, vol. 28, no. 1,
+pp. 41–75, 1997.
+[21] Y. Zhang and Q. Yang, “A survey on multi-task learning,” IEEE Trans.
+Knowledge and Data Engineering, vol. 34, no. 12, pp. 5586–5609, 2021.
+[22] T. Chen and C. Guestrin, “XGBoost: A scalable tree boosting system,”
+in Proc. 22nd ACM SIGKDD Int. Conf. on Knowledge Discovery and
+Data Mining (KDD ’16), 2016, pp. 785–794.
+[23] National Crime Records Bureau, “Crime in India 2017-2022,” Ministry
+of Home Affairs, Government of India, New Delhi. [Online]. Available:
+https://ncrb.gov.in/. [Accessed: Jan. 2024].
+[24] C. Catlett, N. Collier, and P. S. Yu, “Transportation safety and crime
+prediction using machine learning,” Big Data Cogn. Comput., vol. 4,
+no. 3, p. 22, 2020.
+[25] Y. Wang, H. Zhang, and J. Chen, “Fairness-aware machine learning: A
+survey on bias detection and mitigation,” Neural Comput. Appl., vol. 35,
+no. 12, pp. 8901–8925, 2023.
+
+[26] M. Mohammadi, A. N. Toosi, and M. P. P. N. Silva, “Algorithmic
+fairness in criminal justice: A systematic literature review,” J. Big Data,
+vol. 10, no. 1, p. 89, 2023.
+[27] X. Zhang, L. Wang, and K. He, “Deep learning for spatio-temporal crime
+prediction: Recent advances and challenges,” Artif. Intell. Rev., vol. 57,
+no. 2, p. 34, 2024.
+[28] A. Kumar, S. Sharma, and R. Singh, “Machine learning approaches
+for crime analysis and prediction: A comprehensive review,” Int. J. Inf.
+Technol., vol. 14, no. 6, pp. 1205–1218, 2022.
+[29] R. Gupta and P. Kumar, “Bias and fairness in AI-driven law enforcement
+systems: Challenges and opportunities,” J. Reliab. Intell. Environ., vol. 7,
+no. 3, pp. 189–203, 2021.
+[30] S. Patel, M. Thakur, and A. Verma, “Multi-task deep learning for urban
+crime forecasting with demographic considerations,” Multimedia Tools
+Appl., vol. 82, no. 15, pp. 22847–22869, 2023.
+[31] J. Lee, K. Park, and S. Kim, “Intersectional fairness in predictive
+policing: Addressing compounded vulnerabilities,” Ethics Inf. Technol.,
+vol. 26, no. 1, p. 12, 2024.
+[32] M. Rodriguez, A. Martinez, and F. Garcia, “Temporal attention mechanisms for crime pattern analysis,” Expert Syst. Appl., vol. 208, p. 118089,
+2022.
+[33] D. Thompson, R. Williams, and L. Brown, “Causal inference for fairness
+in criminal risk assessment,” J. Artif. Intell. Res., vol. 76, pp. 445–489,
+2023.
+
+

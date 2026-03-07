@@ -1,0 +1,162 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{perry2013predictive}
+\citation{lum2016predict,richardson2019dirty}
+\citation{angwin2016machine,barocas2016big}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-A}}Research Objectives}{1}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {I-B}}Contributions}{1}{subsection.1.2}\protected@file@percent }
+\citation{box2015time}
+\citation{anselin2000spatial}
+\citation{breiman2001random,chen2016xgboost}
+\citation{taylor2018forecasting}
+\citation{huang2018deepcrime}
+\citation{hochreiter1997long}
+\citation{vaswani2017attention}
+\citation{angwin2016machine,dressel2018accuracy}
+\citation{verma2018fairness}
+\citation{kleinberg2016inherent}
+\citation{hardt2016equality}
+\citation{caruana1997multitask}
+\citation{zhang2021survey}
+\citation{patel2023multi}
+\citation{wu2024improving}
+\citation{mohammadi2023survey,wang2023fairness}
+\citation{box2015time}
+\citation{taylor2018forecasting}
+\citation{anselin2000spatial}
+\citation{breiman2001random}
+\citation{chen2016xgboost}
+\citation{catlett2020transportation}
+\citation{hochreiter1997long}
+\citation{huang2018deepcrime}
+\citation{vaswani2017attention}
+\citation{rodriguez2022temporal}
+\citation{patel2023multi}
+\citation{angwin2016machine}
+\citation{zafar2017fairness}
+\citation{wu2024improving}
+\citation{lee2024intersectional}
+\citation{thompson2023causal}
+\citation{gupta2021bias}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Crime Prediction Models}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Algorithmic Fairness in Criminal Justice}{2}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Multi-Task Learning for Crime Prediction}{2}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-D}}Novelty of Proposed Work}{2}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-E}}Summary of Existing Approaches}{2}{subsection.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {III}Data Description and Preprocessing}{2}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Dataset Overview}{2}{subsection.3.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Literature Survey: Crime Prediction Models and Fairness Approaches}}{3}{table.1}\protected@file@percent }
+\newlabel{tab:literature_survey}{{I}{3}{Literature Survey: Crime Prediction Models and Fairness Approaches}{table.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Dataset Statistics}}{4}{table.2}\protected@file@percent }
+\newlabel{tab:dataset_stats}{{II}{4}{Dataset Statistics}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Dataset Distribution by Protected Group}}{4}{table.3}\protected@file@percent }
+\newlabel{tab:group_distribution}{{III}{4}{Dataset Distribution by Protected Group}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Protected Group Definitions}{4}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Feature Engineering}{4}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces FC-MT-LSTM Architecture. The proposed architecture uses a CNN to extract spatial features and a bidirectional attention-based LSTM to learn time-dependent patterns. Outputs from these components are combined through a shared encoder, followed by four dedicated decoders for SC, ST, Women, and Children. The objective function incorporates fairness constraints so that both accuracy and group equity are optimized together.}}{4}{figure.1}\protected@file@percent }
+\newlabel{fig:architecture}{{1}{4}{FC-MT-LSTM Architecture. The proposed architecture uses a CNN to extract spatial features and a bidirectional attention-based LSTM to learn time-dependent patterns. Outputs from these components are combined through a shared encoder, followed by four dedicated decoders for SC, ST, Women, and Children. The objective function incorporates fairness constraints so that both accuracy and group equity are optimized together}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Data Preprocessing Pipeline}{4}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Proposed FC-MT-LSTM{} Architecture}{4}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Architecture Overview}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Spatial CNN Module}{5}{subsection.4.2}\protected@file@percent }
+\newlabel{eq:cnn1}{{1}{5}{Spatial CNN Module}{equation.4.1}{}}
+\newlabel{eq:cnn2}{{2}{5}{Spatial CNN Module}{equation.4.2}{}}
+\newlabel{eq:cnn3}{{3}{5}{Spatial CNN Module}{equation.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Temporal LSTM with Attention}{5}{subsection.4.3}\protected@file@percent }
+\newlabel{eq:lstm}{{4}{5}{Temporal LSTM with Attention}{equation.4.4}{}}
+\newlabel{eq:attn1}{{5}{5}{Temporal LSTM with Attention}{equation.4.5}{}}
+\newlabel{eq:attn2}{{6}{5}{Temporal LSTM with Attention}{equation.4.6}{}}
+\newlabel{eq:attn3}{{7}{5}{Temporal LSTM with Attention}{equation.4.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Shared Encoder}{5}{subsection.4.4}\protected@file@percent }
+\newlabel{eq:concat}{{8}{5}{Shared Encoder}{equation.4.8}{}}
+\newlabel{eq:shared1}{{9}{5}{Shared Encoder}{equation.4.9}{}}
+\newlabel{eq:shared2}{{10}{5}{Shared Encoder}{equation.4.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-E}}Group-Specific Decoders}{5}{subsection.4.5}\protected@file@percent }
+\newlabel{eq:decoder}{{11}{5}{Group-Specific Decoders}{equation.4.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-F}}Fairness-Constrained Loss Function}{5}{subsection.4.6}\protected@file@percent }
+\newlabel{eq:total_loss}{{12}{5}{Fairness-Constrained Loss Function}{equation.4.12}{}}
+\newlabel{eq:fairness_loss}{{14}{5}{Fairness-Constrained Loss Function}{equation.4.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-G}}Training Procedure}{5}{subsection.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-H}}Training Algorithm}{5}{subsection.4.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {V}Experimental Setup}{5}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Baseline Models}{5}{subsection.5.1}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces FC-MT-LSTM Training with Fairness Constraints}}{6}{algorithm.1}\protected@file@percent }
+\newlabel{alg:fc_mt_lstm}{{1}{6}{Training Algorithm}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Evaluation Metrics}{6}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Results}{6}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Overall Performance Comparison}{6}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}Per-Group Performance Analysis}{6}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Fairness-Accuracy Trade-off}{6}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}Feature Importance Analysis}{6}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Discussion}{6}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-A}}Implications for Law Enforcement}{6}{subsection.7.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Overall Model Performance Comparison on Test Set (2022)}}{7}{table.4}\protected@file@percent }
+\newlabel{tab:overall_results}{{IV}{7}{Overall Model Performance Comparison on Test Set (2022)}{table.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Model Performance Comparison. (a) Mean Absolute Error on log scale. (b) R$^2$ scores. (c) Fairness Ratio.}}{7}{figure.2}\protected@file@percent }
+\newlabel{fig:model_comparison}{{2}{7}{Model Performance Comparison. (a) Mean Absolute Error on log scale. (b) R$^2$ scores. (c) Fairness Ratio}{figure.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces FC-MT-LSTM Per-Group Performance}}{7}{table.5}\protected@file@percent }
+\newlabel{tab:group_performance}{{V}{7}{FC-MT-LSTM Per-Group Performance}{table.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces FC-MT-LSTM Per-Group Performance. (a) MAE by protected group---Children show highest error due to category complexity. (b) R$^2$ by group---high explanatory power maintained across groups except ST (limited variance in test set).}}{7}{figure.3}\protected@file@percent }
+\newlabel{fig:per_group}{{3}{7}{FC-MT-LSTM Per-Group Performance. (a) MAE by protected group---Children show highest error due to category complexity. (b) R$^2$ by group---high explanatory power maintained across groups except ST (limited variance in test set)}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Accuracy-Fairness Trade-off. Models are positioned by MAE (x-axis, log scale) and Fairness Ratio (y-axis). The optimal region (low error, low unfairness) is at the bottom-left. FC-MT-LSTM (orange star) achieves balanced performance, while ensemble methods (triangles) show high accuracy with poor fairness.}}{7}{figure.4}\protected@file@percent }
+\newlabel{fig:tradeoff}{{4}{7}{Accuracy-Fairness Trade-off. Models are positioned by MAE (x-axis, log scale) and Fairness Ratio (y-axis). The optimal region (low error, low unfairness) is at the bottom-left. FC-MT-LSTM (orange star) achieves balanced performance, while ensemble methods (triangles) show high accuracy with poor fairness}{figure.4}{}}
+\citation{barocas2016big}
+\citation{thompson2023causal}
+\citation{lee2024intersectional}
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Top 5 Feature Importance}}{8}{table.6}\protected@file@percent }
+\newlabel{tab:features}{{VI}{8}{Top 5 Feature Importance}{table.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-B}}Limitations}{8}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-C}}Ethical Considerations}{8}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Conclusion}{8}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IX}Future Scope}{8}{section.9}\protected@file@percent }
+\bibstyle{IEEEtran}
+\bibcite{perry2013predictive}{1}
+\bibcite{lum2016predict}{2}
+\bibcite{richardson2019dirty}{3}
+\bibcite{wu2024improving}{4}
+\bibcite{angwin2016machine}{5}
+\bibcite{barocas2016big}{6}
+\bibcite{box2015time}{7}
+\bibcite{anselin2000spatial}{8}
+\bibcite{breiman2001random}{9}
+\bibcite{taylor2018forecasting}{10}
+\bibcite{huang2018deepcrime}{11}
+\bibcite{hochreiter1997long}{12}
+\bibcite{vaswani2017attention}{13}
+\bibcite{dressel2018accuracy}{14}
+\bibcite{verma2018fairness}{15}
+\bibcite{kleinberg2016inherent}{16}
+\bibcite{kamiran2012data}{17}
+\bibcite{zafar2017fairness}{18}
+\bibcite{hardt2016equality}{19}
+\bibcite{caruana1997multitask}{20}
+\bibcite{zhang2021survey}{21}
+\bibcite{chen2016xgboost}{22}
+\bibcite{ncrb2022crime}{23}
+\bibcite{catlett2020transportation}{24}
+\bibcite{wang2023fairness}{25}
+\bibcite{mohammadi2023survey}{26}
+\bibcite{zhang2024deep}{27}
+\bibcite{kumar2022machine}{28}
+\bibcite{gupta2021bias}{29}
+\bibcite{patel2023multi}{30}
+\bibcite{lee2024intersectional}{31}
+\bibcite{rodriguez2022temporal}{32}
+\bibcite{thompson2023causal}{33}
+\@writefile{toc}{\contentsline {section}{References}{9}{section*.3}\protected@file@percent }
+\gdef \@abspage@last{9}
