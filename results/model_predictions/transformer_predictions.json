@@ -1,1472 +1,1472 @@
 [
   {
-    "predicted":32.2035102844,
+    "predicted":43.2669067383,
     "actual":49.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":53.321346283,
+    "predicted":58.0276184082,
     "actual":68.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":179.742767334,
+    "predicted":168.2330169678,
     "actual":192.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":102.2622756958,
+    "predicted":108.7164459229,
     "actual":120.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":97.7321624756,
+    "predicted":107.0429840088,
     "actual":117.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":66.0369262695,
+    "predicted":65.5261917114,
     "actual":78.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":84.9409561157,
+    "predicted":97.8313751221,
     "actual":108.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":33.098991394,
+    "predicted":39.3725585938,
     "actual":46.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":59.8260345459,
+    "predicted":72.0217437744,
     "actual":76.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":16.8954048157,
+    "predicted":23.9972801208,
     "actual":27.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":34.3228187561,
+    "predicted":40.3124465942,
     "actual":43.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":140.6080322266,
+    "predicted":135.9936065674,
     "actual":142.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":65.9766387939,
+    "predicted":71.4381637573,
     "actual":75.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":75.6089477539,
+    "predicted":81.1525192261,
     "actual":83.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":151.1430969238,
+    "predicted":187.6959228516,
     "actual":136.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":60.6465797424,
+    "predicted":69.0617828369,
     "actual":70.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":26.8735084534,
+    "predicted":28.0291290283,
     "actual":30.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":50.8081169128,
+    "predicted":55.0316238403,
     "actual":59.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.7578668594,
+    "predicted":1.2937035561,
     "actual":6.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":2.9835968018,
+    "predicted":3.5490128994,
     "actual":12.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":15.4786262512,
+    "predicted":13.8767080307,
     "actual":28.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":1.4306550026,
+    "predicted":1.9917168617,
     "actual":6.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6163775921,
     "actual":0.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":10.3165407181,
+    "predicted":14.0840492249,
     "actual":19.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":3.7781205177,
+    "predicted":3.482789278,
     "actual":15.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":2.2872467041,
+    "predicted":2.9710335732,
     "actual":11.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":9.9800281525,
+    "predicted":13.0461120605,
     "actual":19.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":634.2677001953,
+    "predicted":657.1423950195,
     "actual":611.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":742.333190918,
+    "predicted":755.7779541016,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":742.694152832,
+    "predicted":755.0396728516,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":741.8894042969,
+    "predicted":754.2899780273,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":742.5022583008,
+    "predicted":753.2341918945,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":742.3857421875,
+    "predicted":754.2747802734,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":742.2849121094,
+    "predicted":753.7746582031,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":245.4815368652,
+    "predicted":241.5497589111,
     "actual":277.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":651.2560424805,
+    "predicted":675.212890625,
     "actual":618.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.472407341,
+    "predicted":2.422180891,
     "actual":3.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6141314507,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.8313109875,
+    "predicted":2.5098028183,
     "actual":5.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.5644831657,
+    "predicted":1.8405373096,
     "actual":6.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":407.8719177246,
+    "predicted":426.860168457,
     "actual":422.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.6748373508,
+    "predicted":1.9833345413,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.5107178688,
+    "predicted":1.3924154043,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.1490433216,
+    "predicted":0.9799575806,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6116781235,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6089212894,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6082298756,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6062214375,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6033108234,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.6685242653,
+    "predicted":2.1573047638,
     "actual":10.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":737.8685913086,
+    "predicted":751.1789550781,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":1.0929934978,
+    "predicted":2.6014506817,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":1.0628154278,
+    "predicted":1.9767427444,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.2011013031,
+    "predicted":0.9383349419,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.6347489357,
+    "predicted":2.0969781876,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.2115139961,
+    "predicted":1.465236187,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.1056280136,
+    "predicted":1.415571332,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6931071281,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":1.3832979202,
+    "predicted":2.6576795578,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.2752258778,
+    "predicted":1.0542197227,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":42.3679847717,
+    "predicted":47.9266853333,
     "actual":57.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":170.562713623,
+    "predicted":172.5455169678,
     "actual":200.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":107.9155578613,
+    "predicted":113.3057098389,
     "actual":121.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":1.4459520578,
     "actual":1.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":1.2353291512,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":2.5885136127,
+    "predicted":7.3332719803,
     "actual":11.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.4526751041,
+    "predicted":1.2296385765,
     "actual":3.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":0.0,
+    "predicted":0.5603253841,
     "actual":0.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":0.0,
+    "predicted":0.5187389851,
     "actual":0.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":44.1298522949,
+    "predicted":61.1218795776,
     "actual":70.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":243.4991455078,
+    "predicted":237.2074279785,
     "actual":274.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":183.2140808105,
+    "predicted":185.5608978271,
     "actual":212.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":9.2895231247,
+    "predicted":10.2454357147,
     "actual":37.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":2.6530389786,
+    "predicted":4.6618022919,
     "actual":21.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.2486357689,
+    "predicted":1.5701929331,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.2301547527,
+    "predicted":1.3824732304,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":729.6494140625,
+    "predicted":732.6472167969,
     "actual":742.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.742909193,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.738727808,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.2314608097,
+    "predicted":1.5831543207,
     "actual":8.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.7243442535,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.724378109,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":101.0029373169,
+    "predicted":93.7055892944,
     "actual":103.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":2.9584546089,
+    "predicted":6.1238164902,
     "actual":26.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":11.7424316406,
+    "predicted":23.1545581818,
     "actual":48.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.3390417099,
+    "predicted":1.4007790089,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":738.9182739258,
+    "predicted":754.5364990234,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":456.5928039551,
+    "predicted":430.7354125977,
     "actual":451.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":593.2661132812,
+    "predicted":584.7374267578,
     "actual":616.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":1.1119254827,
+    "predicted":2.7718977928,
     "actual":3.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":551.6759033203,
+    "predicted":554.2745361328,
     "actual":559.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.1357419491,
+    "predicted":1.5549769402,
     "actual":7.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.7473990917,
+    "predicted":2.3572449684,
     "actual":12.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.1665315628,
+    "predicted":1.4263875484,
     "actual":6.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.8005621433,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":734.9915771484,
+    "predicted":744.4893798828,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":739.5471801758,
+    "predicted":753.7631225586,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":3.5985591412,
+    "predicted":3.3559381962,
     "actual":11.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":739.1575927734,
+    "predicted":753.9160766602,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":1.3928267956,
+    "predicted":2.8218035698,
     "actual":5.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.5640325546,
+    "predicted":1.2714216709,
     "actual":3.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0489053726,
+    "predicted":1.0583159924,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.040091753,
+    "predicted":0.9044282436,
     "actual":2.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":2.6877827644,
+    "predicted":3.6557865143,
     "actual":11.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":1.2690489292,
+    "predicted":1.4801784754,
     "actual":4.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.7621560097,
+    "predicted":2.0383098125,
     "actual":2.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.8550958633,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.7446146011,
+    "predicted":2.203135252,
     "actual":1.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.5342051983,
+    "predicted":1.957354188,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.9292564392,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.6831977367,
+    "predicted":2.0697169304,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.5003533363,
+    "predicted":2.0506896973,
     "actual":1.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.9119882584,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.8206055164,
+    "predicted":2.4974503517,
     "actual":1.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":1.2259862423,
+    "predicted":2.5116882324,
     "actual":4.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.8504815102,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":1.3519564867,
+    "predicted":2.8405194283,
     "actual":2.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":1.1446251869,
+    "predicted":3.7321429253,
     "actual":10.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.5462193489,
+    "predicted":1.7126117945,
     "actual":3.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.7617006302,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.9494805336,
     "actual":2.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.6152939796,
+    "predicted":2.1349196434,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":1.6014953852,
+    "predicted":3.1035141945,
     "actual":10.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":81.9946136475,
+    "predicted":83.2988433838,
     "actual":85.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.3319568634,
+    "predicted":1.7777791023,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":17.2108421326,
+    "predicted":14.132191658,
     "actual":18.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.7637326717,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":147.9573974609,
+    "predicted":160.6148834229,
     "actual":147.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.399518013,
+    "predicted":1.8210699558,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":172.0298156738,
+    "predicted":189.1528167725,
     "actual":182.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.5667221546,
+    "predicted":1.9139438868,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.5474529266,
+    "predicted":1.7319034338,
     "actual":1.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.2118906975,
+    "predicted":1.500670433,
     "actual":1.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.2061667442,
+    "predicted":1.3364117146,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.1804540157,
+    "predicted":1.3088953495,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.1947557926,
+    "predicted":1.3610305786,
     "actual":1.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.1622719765,
+    "predicted":1.2666444778,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.155184269,
+    "predicted":1.2477970123,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.8807988167,
     "actual":4.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.7110328674,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.7049622536,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6935079098,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6888232231,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.685135603,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6815867424,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6779534817,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.5654089451,
     "actual":0.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":0.0,
+    "predicted":0.5849416256,
     "actual":0.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":0.0,
+    "predicted":0.5952444077,
     "actual":0.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":0.0,
+    "predicted":0.548614502,
     "actual":1.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6269667149,
     "actual":0.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6456158161,
     "actual":0.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6572840214,
     "actual":0.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":0.0,
+    "predicted":0.6732423306,
     "actual":0.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":1.0070211887,
+    "predicted":1.940346241,
     "actual":1.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.7676444054,
+    "predicted":2.0939331055,
     "actual":8.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":2.3344168663,
+    "predicted":8.5484647751,
     "actual":14.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.2354385853,
+    "predicted":1.2285029888,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.2169313431,
+    "predicted":1.1891555786,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.197558403,
+    "predicted":1.1610016823,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.1917161942,
+    "predicted":1.1438992023,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.2024199963,
+    "predicted":1.1780936718,
     "actual":1.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.1799502373,
+    "predicted":1.1016321182,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.3951151371,
+    "predicted":2.0356256962,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.8842082024,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.8585772514,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.436208725,
     "actual":0.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":0.0,
+    "predicted":0.4353270531,
     "actual":0.0,
-    "protected_group":2
+    "protected_group":"ST"
   },
   {
-    "predicted":0.8383479118,
+    "predicted":2.3222208023,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":113.3595352173,
+    "predicted":113.6956710815,
     "actual":114.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":13.5303401947,
+    "predicted":13.5335836411,
     "actual":17.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":213.8701782227,
+    "predicted":212.6497192383,
     "actual":205.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":2.2836520672,
+    "predicted":3.872048378,
     "actual":12.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.1480259895,
+    "predicted":1.3176476955,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":4.2140417099,
+    "predicted":12.0874586105,
     "actual":9.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":511.7124023438,
+    "predicted":517.3025512695,
     "actual":575.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.9214396477,
+    "predicted":2.8762218952,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.9607908726,
     "actual":1.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":38.850605011,
+    "predicted":43.4534187317,
     "actual":40.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":739.9389648438,
+    "predicted":755.7606201172,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":1.3830394745,
+    "predicted":3.2275259495,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":141.8680419922,
+    "predicted":134.5319976807,
     "actual":138.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":78.1238327026,
+    "predicted":92.8892593384,
     "actual":83.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":229.6304626465,
+    "predicted":244.8331298828,
     "actual":230.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":255.5573730469,
+    "predicted":249.8386993408,
     "actual":257.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":268.5887451172,
+    "predicted":254.0668487549,
     "actual":266.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":43.1358375549,
+    "predicted":48.0850410461,
     "actual":47.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":74.1143112183,
+    "predicted":78.5899047852,
     "actual":75.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":739.4612426758,
+    "predicted":755.250793457,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":442.987487793,
+    "predicted":441.9107666016,
     "actual":436.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":2.081507206,
+    "predicted":5.1926083565,
     "actual":12.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":9.2625741959,
+    "predicted":5.4701223373,
     "actual":20.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":282.8477172852,
+    "predicted":279.1488952637,
     "actual":285.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":34.3482284546,
+    "predicted":35.6193313599,
     "actual":35.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":465.1986083984,
+    "predicted":456.1251525879,
     "actual":459.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":735.0776977539,
+    "predicted":748.2197265625,
     "actual":742.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":727.0830078125,
+    "predicted":697.9951171875,
     "actual":742.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":28.1593513489,
+    "predicted":37.7256126404,
     "actual":38.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":60.8192481995,
+    "predicted":65.3862762451,
     "actual":61.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":738.8173828125,
+    "predicted":753.6597290039,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":739.3284301758,
+    "predicted":752.8704223633,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":738.2175292969,
+    "predicted":749.7009277344,
     "actual":742.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":16.6989517212,
+    "predicted":20.1157875061,
     "actual":22.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":741.6575927734,
+    "predicted":754.5847167969,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.4124441147,
+    "predicted":1.5280622244,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.5932044983,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.5254330635,
+    "predicted":1.5042997599,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.4096403122,
+    "predicted":1.268923521,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.5688478947,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.5675606728,
+    "predicted":1.4328038692,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":1.0567455292,
+    "predicted":2.3773047924,
     "actual":1.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.6420922279,
+    "predicted":1.8802628517,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.4132890701,
+    "predicted":1.4701484442,
     "actual":2.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0006928444,
+    "predicted":0.8719911575,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":5.9963674545,
+    "predicted":3.3771059513,
     "actual":11.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":1.7323457003,
+    "predicted":2.1634612083,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":144.3173370361,
+    "predicted":146.1139221191,
     "actual":146.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":1.0738286972,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":442.9827880859,
+    "predicted":427.0486755371,
     "actual":437.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.8916163445,
+    "predicted":1.8580861092,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.7674295902,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":1.3513216972,
+    "predicted":2.1567411423,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":68.7083282471,
+    "predicted":71.1473083496,
     "actual":70.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.784307003,
     "actual":1.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":141.573638916,
+    "predicted":144.4464416504,
     "actual":136.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.5209460258,
+    "predicted":1.8378421068,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.3520891666,
+    "predicted":1.549725771,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.731991291,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":15.13758564,
+    "predicted":19.5648193359,
     "actual":48.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":419.340423584,
+    "predicted":409.6028747559,
     "actual":411.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":169.3371734619,
+    "predicted":171.5412445068,
     "actual":179.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":314.4346923828,
+    "predicted":302.7800292969,
     "actual":313.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.4325699806,
+    "predicted":1.4915516376,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.4295847416,
+    "predicted":1.2616603374,
     "actual":1.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.1156082153,
+    "predicted":1.0145761967,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.131187439,
+    "predicted":1.0799930096,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0858476162,
+    "predicted":1.0537447929,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":298.6012573242,
+    "predicted":280.5346984863,
     "actual":291.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":88.3759155273,
+    "predicted":94.7829284668,
     "actual":90.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":144.1969604492,
+    "predicted":139.5261535645,
     "actual":136.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.9263043404,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.8686187267,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.7634029388,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.7634119987,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.7620131969,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":741.7288208008,
+    "predicted":752.2572631836,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":740.3856201172,
+    "predicted":743.3010253906,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":741.930480957,
+    "predicted":753.5068359375,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.9750814438,
+    "predicted":2.3981070518,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.953417778,
+    "predicted":1.9460384846,
     "actual":1.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.1530561447,
+    "predicted":1.0083358288,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.1203055382,
+    "predicted":0.989181757,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.0800702572,
+    "predicted":0.9433510303,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":213.4163208008,
+    "predicted":216.5019073486,
     "actual":222.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":131.4739074707,
+    "predicted":136.0942382812,
     "actual":139.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":128.1883544922,
+    "predicted":128.3131103516,
     "actual":127.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":203.4457702637,
+    "predicted":197.5879974365,
     "actual":202.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":731.1110839844,
+    "predicted":728.0417480469,
     "actual":724.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":719.9887695312,
+    "predicted":676.6822509766,
     "actual":683.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.9945113659,
+    "predicted":2.0735077858,
     "actual":1.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.4408564568,
+    "predicted":1.1730380058,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.0,
+    "predicted":0.8379693031,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":2.2466578484,
+    "predicted":2.7654166222,
     "actual":1.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.0,
+    "predicted":1.0176100731,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":1.5403356552,
+    "predicted":3.2888541222,
     "actual":2.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":70.0738677979,
+    "predicted":75.3156585693,
     "actual":75.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":8.7011222839,
+    "predicted":15.1731920242,
     "actual":18.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":106.6188659668,
+    "predicted":121.4279098511,
     "actual":110.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":2.8728263378,
+    "predicted":3.4365530014,
     "actual":12.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.1202974319,
+    "predicted":1.1681754589,
     "actual":1.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":5.6446499825,
+    "predicted":3.3559381962,
     "actual":12.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.9728307724,
+    "predicted":2.580063343,
     "actual":0.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.3353557587,
+    "predicted":1.5603396893,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":1.870842576,
+    "predicted":3.2758319378,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.0,
+    "predicted":0.7926695347,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":2.2548754215,
+    "predicted":2.1230270863,
     "actual":0.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":274.5586547852,
+    "predicted":251.8928222656,
     "actual":260.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":312.837097168,
+    "predicted":278.2781982422,
     "actual":295.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":141.5224304199,
+    "predicted":142.0287322998,
     "actual":139.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":259.0231628418,
+    "predicted":266.9668273926,
     "actual":275.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":261.6646728516,
+    "predicted":249.6857299805,
     "actual":263.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.1753573418,
+    "predicted":1.1371109486,
     "actual":3.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":739.4978027344,
+    "predicted":753.6265869141,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":246.8906555176,
+    "predicted":233.5424041748,
     "actual":244.0,
-    "protected_group":0
+    "protected_group":"Children"
   },
   {
-    "predicted":0.1615457535,
+    "predicted":1.3361608982,
     "actual":5.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":739.6854858398,
+    "predicted":744.9049072266,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.0,
+    "predicted":0.8860549927,
     "actual":3.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.7249150276,
     "actual":0.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":0.0,
+    "predicted":0.731774807,
     "actual":1.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":741.3567504883,
+    "predicted":754.0247192383,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":741.8037109375,
+    "predicted":753.5555419922,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":741.7651977539,
+    "predicted":752.7537231445,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   },
   {
-    "predicted":0.0,
+    "predicted":0.8986032009,
     "actual":1.0,
-    "protected_group":1
+    "protected_group":"SC"
   },
   {
-    "predicted":742.0382080078,
+    "predicted":755.5871582031,
     "actual":742.0,
-    "protected_group":3
+    "protected_group":"Women"
   }
 ]

@@ -1,0 +1,87 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+crimeprediction_env/
+env/
+venv/
+ENV/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Documentation
+docs/_build/
+
+# Results (keep model weights and metrics, ignore large prediction files)
+results/model_predictions/*.json
+results/*_dashboard_data.json
+
+# Explanation files (internal documentation)
+explanation/
+
+# Data (keep structure, ignore large files)
+data/raw/*.csv
+data/transform/*.csv
+data/cleaned/*.csv
+data/features/*.csv
+data/splits/*.csv
+data/zextracted/*.csv
+
+# Keep these (metadata files)
+!data/cleaned/cleaning_metadata.json
+!data/features/feature_list.txt
+!data/splits/split_metadata.json
+!data/splits/validation_report.json
+!data/splits/fix_metadata.json
+
+# Research paper auxiliary files (keep source and PDF only)
+researchPaper/*.aux
+researchPaper/*.log
+researchPaper/*.nav
+researchPaper/*.out
+researchPaper/*.snm
+researchPaper/*.toc
+researchPaper/*.fls
+researchPaper/*.fdb_latexmk
+researchPaper/*.blg
+researchPaper/*.bbl
+
+# OS
+Thumbs.db

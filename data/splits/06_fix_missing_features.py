@@ -41,36 +41,36 @@ def identify_feature_types(df):
 def fill_missing_lag_features(df, lag_features):
     """
     Fill missing lag features intelligently
-    
+
     Strategy:
     - For first year of each district/group: fill with 0 (no previous data)
     - For subsequent missing values: forward fill from same district/group
     """
-    
+
     print("\nFilling missing lag features...")
     print(f"  Features to fix: {len(lag_features)}")
-    
+
     # Sort to ensure proper filling
     df = df.sort_values(['state_name', 'district_name', 'protected_group', 'year'])
-    
+
     for col in lag_features:
         missing_before = df[col].isnull().sum()
-        
+
         if missing_before > 0:
             # Fill with 0 first (for initial years)
             df[col] = df[col].fillna(0)
-            
+
             # Then forward fill within groups (in case of gaps)
-            df[col] = df.groupby(['state_name', 'district_name', 'protected_group'])[col].fillna(method='ffill')
-            
+            df[col] = df.groupby(['state_name', 'district_name', 'protected_group'])[col].ffill()
+
             # If still missing, fill with 0
             df[col] = df[col].fillna(0)
-            
+
             missing_after = df[col].isnull().sum()
             print(f"    {col}: {missing_before} → {missing_after}")
-    
+
     print(f"  ✓ Lag features fixed")
-    
+
     return df
 
 def fill_missing_yoy_features(df, yoy_features):

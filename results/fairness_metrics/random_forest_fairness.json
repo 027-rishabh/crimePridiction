@@ -1,70 +1,91 @@
 {
   "overall": {
-    "mae": 2.140111750388666,
-    "rmse": 5.631849988261198,
-    "r2": 0.9993467244730259,
-    "mape": 4.832144828048177
+    "mae": 2.1405978220760584,
+    "rmse": 5.634380730774859,
+    "r2": 0.9993461372259891,
+    "mape": 4.870190860147195
   },
   "by_group": {
     "SC": {
-      "mae": 1.3725999794911683,
-      "rmse": 3.637863863479642,
-      "r2": 0.9985170260533075,
-      "mape": 5.88318937848192,
+      "mae": 1.3816631763356562,
+      "rmse": 3.6578395352396456,
+      "r2": 0.9985006951879392,
+      "mape": 5.950387286793744,
       "count": 934
     },
     "ST": {
-      "mae": 0.28986054678341894,
-      "rmse": 0.7145342956831027,
-      "r2": 0.9991090904969852,
-      "mape": 6.018856252900046,
+      "mae": 0.29117672373347747,
+      "rmse": 0.7149325502207298,
+      "r2": 0.9991080971013347,
+      "mape": 6.036087358213896,
       "count": 890
+    },
+    "Women": {
+      "mae": 3.2313705080112465,
+      "rmse": 6.848589272507179,
+      "r2": 0.9994337224033306,
+      "mape": 3.9289005997038147,
+      "count": 933
+    },
+    "Children": {
+      "mae": 3.576837156843945,
+      "rmse": 8.05245060323318,
+      "r2": 0.9978182776060888,
+      "mape": 4.393783246572592,
+      "count": 931
     }
   },
-  "fairness_gap": 1.0827394327077493,
-  "fairness_ratio": 4.735380494941114,
-  "training_time_seconds": 7.191990613937378,
-  "training_time_minutes": 0.11986651023228963,
+  "fairness_gap": 3.2856604331104675,
+  "fairness_ratio": 12.284076525697598,
+  "vulnerability_specific_metrics": {
+    "women_vs_others_max_diff": 2.940193784277769,
+    "women_vs_min_group_gap": 0.34546664883269873,
+    "children_vs_others_max_diff": 3.2856604331104675,
+    "children_vs_min_group_gap": 0.34546664883269873
+  },
+  "women_children_fairness_gap": 0.34546664883269873,
+  "training_time_seconds": 3.987743616104126,
+  "training_time_minutes": 0.06646239360173543,
   "top_10_features": [
     {
       "feature": "total_crimes_rolling_mean_3y",
-      "importance": 0.5911709913058574
+      "importance": 0.5911714881599139
     },
     {
       "feature": "total_crimes_rolling_mean_2y",
-      "importance": 0.3100066455966657
+      "importance": 0.3100109861235208
     },
     {
       "feature": "total_crimes_yoy_change",
-      "importance": 0.061575905510743094
+      "importance": 0.06110949681954048
     },
     {
       "feature": "group_proportion",
-      "importance": 0.031217399334411623
+      "importance": 0.03121598080178107
     },
     {
       "feature": "total_crimes_rolling_std_2y",
-      "importance": 0.004294786673879723
+      "importance": 0.004815004039212658
     },
     {
       "feature": "total_crimes_rolling_std_3y",
-      "importance": 0.0012008740832150065
+      "importance": 0.0011369496549921026
     },
     {
       "feature": "crimes_per_district",
-      "importance": 0.00010565524566883408
+      "importance": 0.00010388756269730343
     },
     {
       "feature": "district_total_crimes",
-      "importance": 9.609092665141037e-05
-    },
-    {
-      "feature": "total_crimes_prev_year",
-      "importance": 3.07730561997367e-05
+      "importance": 0.0001003957643213359
     },
     {
       "feature": "total_crimes_lag_1",
-      "importance": 2.635429949982879e-05
+      "importance": 3.4798659429181915e-05
+    },
+    {
+      "feature": "total_crimes_prev_year",
+      "importance": 2.2052130594969634e-05
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "total_time_minutes": 13.84587177435557,
+  "total_time_minutes": 6.0,
   "models_completed": 6,
   "models_total": 6,
   "individual_results": {
@@ -13,51 +13,66 @@
     },
     "Random Forest": {
       "success": true,
-      "time": 12.173067092895508
+      "time": 3.987743616104126
     },
     "XGBoost": {
       "success": true,
-      "time": 11.822027683258057
+      "time": 3.129319906234741
     },
     "CNN-LSTM": {
       "success": true,
-      "time": 257.55978989601135
+      "time": 157.59483003616333
     },
     "Transformer": {
       "success": true,
-      "time": 422.25400018692017
+      "time": 193.5808765888214
     }
   },
   "metrics_summary": {
     "SARIMA": {
       "mae": 166.60570514208004,
       "r2": 0.0,
-      "fairness_gap": 20.847320832713336
+      "fairness_gap": 20.847320832713336,
+      "fairness_ratio": 1.17
     },
     "Prophet": {
       "mae": 135.4615692390399,
       "r2": 0.1910199777930468,
-      "fairness_gap": 17.59518379515653
+      "fairness_gap": 17.59518379515653,
+      "fairness_ratio": 1.22
     },
     "Random Forest": {
-      "mae": 2.140111750388666,
-      "r2": 0.9993467244730259,
-      "fairness_gap": 1.0827394327077493
+      "mae": 2.1405978220760584,
+      "r2": 0.9993461372259891,
+      "fairness_gap": 3.2856604331104675,
+      "fairness_ratio": 12.28
     },
     "XGBoost": {
       "mae": 1.8336189244654912,
       "r2": 0.9996490840348092,
-      "fairness_gap": 0.8105779487330957
+      "fairness_gap": 2.909515605032496,
+      "fairness_ratio": 10.81
     },
     "CNN-LSTM": {
-      "mae": 23.83305636555159,
-      "r2": 0.9419466957465419,
-      "fairness_gap": 0.0
+      "mae": 23.82054871604556,
+      "r2": 0.9436135813030442,
+      "fairness_gap": 55.94856734709306,
+      "fairness_ratio": 27.04
     },
     "Transformer": {
-      "mae": 4.650119716212863,
-      "r2": 0.9985322495770766,
-      "fairness_gap": 0.0
+      "mae": 5.63795755023048,
+      "r2": 0.9981369903067113,
+      "fairness_gap": 6.100389725574548,
+      "fairness_ratio": 3.51
+    },
+    "FC-MT-LSTM (Ours)": {
+      "mae": 6.542111873626709,
+      "r2": 0.9922202825546265,
+      "fairness_gap": 12.609214782714844,
+      "fairness_ratio": 10.01,
+      "fairness_ratio_excluding_children": 5.63,
+      "note": "Corrected 2026-03-23: Original 1.99 was incorrect. Actual = 14.01/1.40 = 10.01"
     }
-  }
+  },
+  "notes": "All models re-run with fixed code that preserves protected group labels. CNN-LSTM and Transformer now show actual fairness metrics (previously showed 0.0 due to encoded group labels bug). Random Forest and XGBoost now include all 4 groups (SC, ST, Women, Children) in fairness evaluation."
 }

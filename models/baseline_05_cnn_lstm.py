@@ -94,20 +94,23 @@ class CNNLSTMPredictor:
     
     def prepare_sequences(self, df, fit_scaler=False):
         """Prepare sequences for CNN-LSTM"""
-        
+
         # First, identify all object/string columns to encode
         df_copy = df.copy()
         string_cols = df_copy.select_dtypes(include=['object']).columns.tolist()
-        
+
+        # Store original protected_group column before encoding for fairness evaluation
+        original_groups = df_copy['protected_group'].values.copy() if 'protected_group' in df_copy.columns else None
+
         # Ensure our known categorical columns are in the string_cols
-        cat_cols = ['state_name', 'district_name', 'protected_group']
+        cat_cols = ['state_name', 'district_name']  # Exclude protected_group from encoding
         for col in cat_cols:
             if col not in string_cols and col in df_copy.columns:
                 string_cols.append(col)
-        
-        # Encode all categorical variables
+
+        # Encode only state_name and district_name, NOT protected_group
         for col in string_cols:
-            if col in df_copy.columns:  # Only process if column exists
+            if col in df_copy.columns and col != 'protected_group':  # Skip protected_group
                 if fit_scaler:
                     le = LabelEncoder()
                     df_copy[col] = le.fit_transform(df_copy[col].astype(str))
@@ -118,7 +121,7 @@ class CNNLSTMPredictor:
                         le = self.label_encoders[col]
                         unique_values = df_copy[col].unique()
                         mapped_values = {}
-                        
+
                         for val in unique_values:
                             val_str = str(val)
                             if val_str in le.classes_:
@@ -126,43 +129,46 @@ class CNNLSTMPredictor:
                             else:
                                 # Assign to the most common category from training
                                 mapped_values[val] = -1
-                        
+
                         df_copy[col] = df_copy[col].map(mapped_values)
                     else:
                         # If no encoder exists, assign to -1
                         df_copy[col] = -1
-        
+
         # Select features
         if self.feature_cols is None:
-            exclude_cols = ['total_crimes', 'year', 'state_code', 'district_code']
+            exclude_cols = ['total_crimes', 'year', 'state_code', 'district_code', 'protected_group']
             self.feature_cols = [col for col in df_copy.columns if col not in exclude_cols]
-        
+
         # Scale features
         X_all = df_copy[self.feature_cols].values
         if fit_scaler:
             X_scaled = self.scaler.fit_transform(X_all)
         else:
             X_scaled = self.scaler.transform(X_all)
-        
-        # Create sequences
+
+        # Create sequences - preserve original group names for fairness evaluation
         sequences = []
         targets = []
         groups = []
+
+        # Sort by protected_group first to maintain order
+        df_sorted = df_copy.sort_values(['protected_group', 'state_name', 'district_name', 'year'])
         
         # Group by district and protected group
-        for (state, district, group), group_data in df_copy.groupby(
+        for (state, district, group), group_data in df_sorted.groupby(
             ['state_name', 'district_name', 'protected_group']
         ):
             group_indices = group_data.index
             group_X = X_scaled[group_indices]
             group_y = group_data['total_crimes'].values
-            
+
             # Create sequences
             for i in range(len(group_X) - self.sequence_length + 1):
                 sequences.append(group_X[i:i+self.sequence_length])
                 targets.append(group_y[i+self.sequence_length-1])
-                groups.append(group)
-        
+                groups.append(group)  # Keep original group name (string)
+
         return np.array(sequences), np.array(targets), np.array(groups)
     
     def fit(self, train_df, epochs=50, batch_size=32):
@@ -220,33 +226,34 @@ class CNNLSTMPredictor:
     
     def predict(self, test_df):
         """Make predictions"""
-        
+
         print("\nGenerating predictions...")
         X_test, y_test, groups_test = self.prepare_sequences(test_df, fit_scaler=False)
-        
+
         self.model.eval()
         predictions = []
-        
+
         with torch.no_grad():
             test_dataset = TimeSeriesDataset(X_test, y_test, groups_test)
             test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
-            
-            for batch_X, _, _ in test_loader:
+
+            for batch_X, batch_y, batch_groups in test_loader:
                 batch_X = batch_X.to(self.device)
                 outputs = self.model(batch_X)
                 predictions.extend(outputs.cpu().numpy())
-        
+
         predictions = np.array(predictions)
         predictions = np.maximum(predictions, 0)  # Ensure non-negative
-        
-        # Create results DataFrame
+
+        # Create results DataFrame with proper group labels
         result_df = pd.DataFrame({
             'predicted': predictions,
             'actual': y_test,
             'protected_group': groups_test
         })
-        
+
         print(f"  ✓ Generated {len(predictions)} predictions")
+        print(f"  Group distribution: {pd.Series(groups_test).value_counts().to_dict()}")
         return result_df
 
 def main():

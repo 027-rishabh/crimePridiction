@@ -62,74 +62,80 @@ def standardize_columns(df):
 
 def aggregate_crime_categories(df):
     """
-    Aggregate detailed crime columns into broader categories
-    
+    Aggregate detailed crime columns into broader categories using keyword matching
+
     Categories:
-    - violent_crimes: murder, hurt, assault
-    - sexual_crimes: rape, sexual harassment, assault on women/children
-    - property_crimes: robbery, dacoity, arson
-    - kidnapping_crimes: all kidnapping types
+    - violent_crimes: murder, hurt, assault, acid attack
+    - sexual_crimes: rape, sexual harassment, assault, POCSO
+    - property_crimes: robbery, dacoity, arson, criminal intimidation
+    - kidnapping_crimes: all kidnapping and abduction types
     - total_crimes: sum of all crimes
     """
-    
+
     # Identify crime columns (numeric columns, excluding metadata)
-    metadata_cols = ['id', 'year', 'state_name', 'state_code', 
-                     'district_name', 'district_code', 
+    metadata_cols = ['id', 'year', 'state_name', 'state_code',
+                     'district_name', 'district_code',
                      'registration_circles', 'protected_group']
-    
-    crime_cols = [col for col in df.columns 
-                  if col not in metadata_cols 
+
+    crime_cols = [col for col in df.columns
+                  if col not in metadata_cols
                   and df[col].dtype in ['int64', 'float64']]
-    
+
     print(f"\nFound {len(crime_cols)} crime columns")
-    
+
     # Convert all crime columns to numeric (handle any strings)
     for col in crime_cols:
         df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
-    
-    # Define category mappings based on your actual column names
+
+    # Define category mappings using KEYWORD matching
+    # Keywords are matched case-insensitively against column names
     category_map = {
-        'violent_crimes': [
-            'murder', 'atmptcommitmurder', 'simplehurt', 'grievoushurt',
-            'assault', 'assaultonadultwomen', 'assaultofchildren',
-            'acidattack', 'atmptacidattack', 'othergrievoushurt'
-        ],
-        'sexual_crimes': [
-            'rapeofwomen', 'rapeofchildren', 'attmptrape',
-            'sexualharassment', 'atmptdisrobe', 'voyeurism', 'stalking',
-            'insltwomenmodesty', 'pocsocases'  # POCSO: Protection of Children from Sexual Offences
-        ],
-        'property_crimes': [
-            'robbery', 'dacoity', 'dacoitywithmurder', 'arson',
-            'criminalintimidation', 'otheripccrime s'
-        ],
-        'kidnapping_crimes': [
-            'missingchildren', 'kidnapping', 'kidnappingforransom',
-            'kidnpabduc', 'kidnpmarriage', 'procurminorgirls',
-            'kidnpdother', 'kidnpmurder', 'kidnpbegging'
-        ]
+        'violent_crimes': {
+            'keywords': ['murder', 'hurt', 'assault', 'acid_attack', 'grievous_hurt'],
+            'exclude': ['rape', 'sexual']  # Exclude sexual crimes from violent
+        },
+        'sexual_crimes': {
+            'keywords': ['rape', 'sexual_harassment', 'sexual_assault', 'pocso', 
+                        'modesty', 'prostitution', 'trafficking'],
+            'exclude': []
+        },
+        'property_crimes': {
+            'keywords': ['robbery', 'dacoity', 'arson', 'criminal_intimidation', 
+                        'theft', 'burglary'],
+            'exclude': []
+        },
+        'kidnapping_crimes': {
+            'keywords': ['kidnap', 'abduct', 'traffick', 'importation'],
+            'exclude': []
+        }
     }
-    
+
     # Create aggregated columns
-    for category, crime_list in category_map.items():
-        # Find matching columns (partial match, case insensitive)
+    for category, config in category_map.items():
+        keywords = config['keywords']
+        exclude = config.get('exclude', [])
+        
         matching_cols = []
-        for crime in crime_list:
-            matches = [col for col in crime_cols if crime.lower() in col.lower()]
-            matching_cols.extend(matches)
-        
-        matching_cols = list(set(matching_cols))  # Remove duplicates
-        
+        for col in crime_cols:
+            col_lower = col.lower()
+            # Check if any keyword matches
+            if any(kw.lower() in col_lower for kw in keywords):
+                # Check if any exclude keyword matches
+                if not any(ex.lower() in col_lower for ex in exclude):
+                    matching_cols.append(col)
+
         if matching_cols:
             df[category] = df[matching_cols].sum(axis=1)
             print(f"  {category}: {len(matching_cols)} columns aggregated")
+            if len(matching_cols) <= 10:
+                print(f"    Columns: {', '.join(matching_cols)}")
         else:
             df[category] = 0
             print(f"  {category}: No matching columns found")
-    
+
     # Total crimes (sum of all numeric crime columns)
     df['total_crimes'] = df[crime_cols].sum(axis=1)
-    
+
     return df
 
 def create_master_dataset():

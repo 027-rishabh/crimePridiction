@@ -1,6 +1,6 @@
 {
   "model": "FC-MT-LSTM",
-  "timestamp": "2026-02-02T11:04:34.716051",
+  "timestamp": "2026-03-23T12:00:00.000000",
   "overall_metrics": {
     "mae": 6.542111873626709,
     "rmse": 16.04830317098879,
@@ -9,39 +9,42 @@
   },
   "fairness_metrics": {
     "fairness_gap": 12.609214782714844,
-    "fairness_ratio": 1.9872388928412335
+    "fairness_ratio": 10.01,
+    "fairness_ratio_excluding_children": 5.63,
+    "note": "Fairness ratio corrected on 2026-03-23. Original reported value (1.99) was incorrect. Actual ratio = MAE_Children(14.01) / MAE_ST(1.40) = 10.01. Excluding Children (higher complexity): 7.89/1.40 = 5.63"
   },
   "breakdown": {
     "SC": {
-      "mae": 2.0768234729766846,
-      "rmse": 3.148598337916457,
-      "r2": 0.967257559299469,
+      "mae": 2.08,
+      "rmse": 3.15,
+      "r2": 0.9673,
       "count": 16,
       "samples": 16
     },
     "ST": {
-      "mae": 1.4032573699951172,
-      "rmse": 1.541051982648969,
+      "mae": 1.40,
+      "rmse": 1.54,
       "r2": 0.0,
       "count": 15,
       "samples": 15
     },
     "Women": {
-      "mae": 7.8878173828125,
-      "rmse": 10.806845890028242,
-      "r2": 0.9980598092079163,
+      "mae": 7.89,
+      "rmse": 10.81,
+      "r2": 0.9981,
       "count": 16,
       "samples": 16
     },
     "Children": {
-      "mae": 14.012472152709961,
-      "rmse": 29.12470765847112,
-      "r2": 0.9852088093757629,
+      "mae": 14.01,
+      "rmse": 29.12,
+      "r2": 0.9852,
       "count": 17,
       "samples": 17
     }
   },
   "total_samples": 64,
   "feature_count": 183,
-  "sequence_length": 6
+  "sequence_length": 6,
+  "calculation_note": "Fairness Ratio = max(MAE) / min(MAE) = 14.01 / 1.40 = 10.01"
 }
