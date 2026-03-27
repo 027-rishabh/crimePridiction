@@ -626,19 +626,6 @@ python fc_mt_lstm_pytorch.py
 
 ---
 
-## Citation
-
-If you use this code or model in your research, please cite our paper:
-
-```bibtex
-@inproceedings{singh2026fairness,
-  title={Fairness-Constrained Multi-Task Learning for Crime Prediction: Addressing Bias Against Vulnerable Populations in Criminal Justice Systems},
-  author={Singh, Rishabh and Agarwal, Nehul and Masoodi, Farah and Raghav, Archit and Tyagi, Geetanjali},
-  booktitle={IEEE Conference Proceedings},
-  year={2026}
-}
-```
-
 **Authors**: Rishabh Singh, Nehul Agarwal, Farah Masoodi, Archit Raghav, Geetanjali Tyagi  
 **Affiliation**: Department of Computer Science and Engineering, SRM Institute of Science and Technology, Delhi NCR Campus, India
 
